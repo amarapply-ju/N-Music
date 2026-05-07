@@ -59,7 +59,7 @@ fun StarDialog(
         text = {
             Column {
                 Text(
-                    text = "Hey there! I\'m Koiverse, the developer of ArchiveTune. I have been putting a lot of love into making this app better every day. \n\nIf you enjoy using ArchiveTune, you can support its development by giving the project a star — it really helps and keeps me motivated to keep improving it!\n\nThanks a bunch for your support and for being part of this journey!",
+                    text = "Hey there! I\'m Koiverse, the developer of ArchiveTune. I have been putting a lot of love into making this app better every day. \n\nIf you enjoy using ArchiveTune, you can support its development by following on Instagram or giving the project a star — it really helps and keeps me motivated to keep improving it!\n\nThanks a bunch for your support and for being part of this journey!",
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
@@ -70,7 +70,7 @@ fun StarDialog(
                     try {
                         val intent = Intent(
                             Intent.ACTION_VIEW,
-                            Uri.parse("https://t.me/ArchiveTuneGC")
+                            Uri.parse("https://instagram.com/ali.mohsen.maruf")
                         )
                         context.startActivity(intent)
                     } catch (e: Exception) {
@@ -80,19 +80,19 @@ fun StarDialog(
                 shapes = ButtonDefaults.shapes(),
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.telegram),
-                    contentDescription = "Telegram",
+                    painter = painterResource(id = R.drawable.share),
+                    contentDescription = "Instagram",
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.size(8.dp))
-                Text(text = "Telegram")
+                Text(text = "Instagram")
             }
             FilledTonalButton(
                 onClick = {
                     try {
                         val intent = Intent(
                             Intent.ACTION_VIEW,
-                            Uri.parse("https://github.com/koiverse/ArchiveTune")
+                            Uri.parse("https://github.com/amarapply-ju/N-Music")
                         )
                         context.startActivity(intent)
                     } catch (e: Exception) {

@@ -3,7 +3,7 @@
 **Status**: Implementation Complete ✅  
 **Date**: May 1, 2026  
 **App Name**: N-music  
-**Version**: 13.2.0 (white-labeled from ArchiveTune)
+**Version**: 13.2.0 (white-labeled to N-music)
 
 ## Changes Implemented
 
@@ -41,9 +41,9 @@
 ### 4. White-Labeled as N-music ✅
 - **Strings Updated**: `app/src/main/res/values/strings.xml`
   - `app_name`: **"N-music"**
-  - Changed all user-facing "ArchiveTune" references to "N-music"
+  - Changed all user-facing old project references to "N-music"
   - Updated Discord info, permission dialogs, etc.
-  - Added attribution: "Built on top of ArchiveTune" in support string
+  - Added attribution in support string
 
 - **Strings Modified**:
   ```
@@ -71,7 +71,7 @@
 ### 6. Developer Credits Updated ✅
 - **Strings Added**: `app/src/main/res/values/strings.xml`
   - Added: `<string name="developer">Developer: @ali.mohsen.maruf</string>`
-  - Attribution to original ArchiveTune maintained
+  - Attribution to the original project maintained
 
 ### 7. Theme Strings Updated ✅
 - **File Modified**: `app/src/main/res/values/strings.xml`

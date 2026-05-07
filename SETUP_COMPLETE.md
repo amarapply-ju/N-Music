@@ -1,4 +1,4 @@
-# 🎯 ArchiveTune Development Setup - Installation Summary
+# 🎯 N-Music Development Setup - Installation Summary
 
 **Date:** May 1, 2026  
 **Status:** ✅ **COMPLETE & READY**
@@ -206,8 +206,8 @@ chmod +x gradlew
 ## 🔗 Resources
 
 - **Official:** https://archivetune.koiiverse.cloud
-- **GitHub:** https://github.com/koiverse/ArchiveTune  
-- **Community:** https://t.me/ArchiveTuneGC
+- **GitHub:** https://github.com/amarapply-ju/N-Music  
+- **Community:** https://instagram.com/ali.mohsen.maruf
 - **Android Docs:** https://developer.android.com
 - **Kotlin Docs:** https://kotlinlang.org/docs
 

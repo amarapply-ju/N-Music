@@ -1,7 +1,7 @@
-# ArchiveTune Development Environment Setup
+# N-Music Development Environment Setup
 
 ## Environment Overview
-This document outlines the development environment setup for the ArchiveTune Project (v13.2.0).
+This document outlines the development environment setup for the N-Music project (v13.2.0).
 
 ### Project Details
 - **Type:** Android Kotlin Application
@@ -178,7 +178,7 @@ chmod +x /home/jeopardous4/Downloads/ArchiveTune-13.2.0/gradlew
 
 ### Resources
 - [Official Website](https://archivetune.koiiverse.cloud)
-- [GitHub Repository](https://github.com/koiverse/ArchiveTune)
-- [Telegram Community](https://t.me/ArchiveTuneGC)
+- [GitHub Repository](https://github.com/amarapply-ju/N-Music)
+- [Instagram](https://instagram.com/ali.mohsen.maruf)
 - [Android Gradle Plugin Documentation](https://developer.android.com/build)
 - [Kotlin Documentation](https://kotlinlang.org/docs/)

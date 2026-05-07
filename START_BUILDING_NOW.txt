@@ -50,8 +50,8 @@ Step 3: Install & Test
 1. Branding
    ✓ "N-music" as app name & title
    ✓ New icon: Red music note on black background
-   ✓ Developer credit: "@ali.mohsen.maruf"
-   ✓ Attribution: "Built on top of ArchiveTune"
+  ✓ Developer credit: "@ali.mohsen.maruf"
+  ✓ Attribution: "Built on top of N-Music"
 
 2. Typography
    ✓ All titles & headings: Dot-matrix font (VT323)
@@ -65,7 +65,7 @@ Step 3: Install & Test
      • Extra Dark (pure black, OLED-optimized)
 
 4. Features
-   ✓ Everything from ArchiveTune works perfectly
+  ✓ Everything from N-Music works perfectly
    ✓ Login, playback, search, playlists, etc.
    ✓ No features removed, only visual changes
 

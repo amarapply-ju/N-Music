@@ -602,10 +602,10 @@ class MainActivity : ComponentActivity() {
             val modeFixedSeedPalette = remember(themeMode) {
                 when (themeMode) {
                     DarkMode.LIGHT -> moe.koiverse.archivetune.ui.theme.ThemeSeedPalette(
-                        primary = Color(0xFF1A1A1A),
-                        secondary = Color(0xFF4A4A4A),
-                        tertiary = Color(0xFF707070),
-                        neutral = Color(0xFFF8F8F8),
+                        primary = Color(0xFF111111),
+                        secondary = Color(0xFF505050),
+                        tertiary = Color(0xFF7A7A7A),
+                        neutral = Color(0xFFEAEAEA),
                     )
                     DarkMode.DARK -> moe.koiverse.archivetune.ui.theme.ThemeSeedPalette(
                         primary = Color(0xFFE0E0E0),

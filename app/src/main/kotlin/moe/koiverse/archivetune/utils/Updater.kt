@@ -50,6 +50,9 @@ private data class ReleasesNetworkResult(
 
 object Updater {
     private val client = HttpClient()
+    private const val GitHubRepoPath = "amarapply-ju/N-Music"
+    private val GitHubApiBaseUrl = "https://api.github.com/repos/$GitHubRepoPath"
+    private val GitHubReleaseDownloadBaseUrl = "https://github.com/$GitHubRepoPath/releases/latest/download/"
     private const val ReleaseCacheCheckIntervalMs: Long = 6 * 60 * 60 * 1000L
     var lastCheckTime = -1L
         private set
@@ -212,7 +215,7 @@ object Updater {
         cachedEtag: String?,
     ): ReleasesNetworkResult {
         val response: HttpResponse =
-            client.get("https://api.github.com/repos/koiverse/ArchiveTune/releases?per_page=$perPage") {
+            client.get("$GitHubApiBaseUrl/releases?per_page=$perPage") {
                 headers {
                     append("Accept", "application/vnd.github+json")
                     append("User-Agent", "ArchiveTune")
@@ -267,7 +270,7 @@ object Updater {
     suspend fun getCommitHistory(count: Int = 20, branch: String = "dev"): Result<List<GitCommit>> =
         runCatching {
             val response =
-                client.get("https://api.github.com/repos/koiverse/ArchiveTune/commits?sha=$branch&per_page=$count")
+                client.get("$GitHubApiBaseUrl/commits?sha=$branch&per_page=$count")
                     .bodyAsText()
             val jsonArray = JSONArray(response)
             val commits = mutableListOf<GitCommit>()
@@ -289,12 +292,11 @@ object Updater {
         }
 
     fun getLatestDownloadUrl(): String {
-        val baseUrl = "https://github.com/koiverse/ArchiveTune/releases/latest/download/"
         val architecture = BuildConfig.ARCHITECTURE
         return if (architecture == "universal") {
-            baseUrl + "ArchiveTune.apk"
+            GitHubReleaseDownloadBaseUrl + "ArchiveTune.apk"
         } else {
-            baseUrl + "app-${architecture}-release.apk"
+            GitHubReleaseDownloadBaseUrl + "app-${architecture}-release.apk"
         }
     }
 

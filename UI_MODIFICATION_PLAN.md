@@ -6,7 +6,7 @@ Make UI changes so the app looks and feels like a Nothing.tech product while kee
 ## Goals
 - Apply a dot-matrix font to all title texts (primary headings, screen titles).
 - Implement three themes: Light, Dark, and Extra Dark (no other customization options).
-- White-label the app as **N-music** while keeping a credit note that this is built on top of ArchiveTune.
+- White-label the app as **N-music** while keeping a credit note that this is built on top of the project.
 - Remove all "About" pages and related branding; replace developer credits with user-provided handle.
 - Keep changes minimal, reversible, and well-documented.
 
@@ -19,7 +19,7 @@ Make UI changes so the app looks and feels like a Nothing.tech product while kee
 1. Add dot-matrix font resource to the `app` module.
 2. Apply the dot-matrix font to all title typography styles and navigation/app bar titles.
 3. Implement Light, Dark, and Extra Dark themes, wire them into the app theme switcher (or default settings), and ensure proper contrast/legibility.
-4. White-label: update `app_name`, launcher icons (if white-label assets provided), and visible strings to `N-music` while adding a small credit line: "Built on top of ArchiveTune" (where appropriate).
+4. White-label: update `app_name`, launcher icons (if white-label assets provided), and visible strings to `N-music` while adding a small credit line where appropriate.
 5. Replace all "About" pages; remove references in navigation and settings screens.
 6. In the Developers / Credits section, add the Instagram handler: `@ali.mohsen.maruf` and remove other About credits as requested.
 7. QA: compile, smoke-test key flows (home, playback, settings, login), check theme switching, verify no regressions.
@@ -56,11 +56,11 @@ Make UI changes so the app looks and feels like a Nothing.tech product while kee
 ### 4) White-label as `N-music`
 - Strings to update:
   - `app/src/main/res/values/strings.xml` → change `app_name` to `N-music`
-  - Any visible occurrences of "ArchiveTune" in UI copy → replace with `N-music` or neutral copy.
+  - Any visible occurrences of the old project name in UI copy → replace with `N-music` or neutral copy.
 - Assets:
   - Launcher icons and splash — if you provide new `N-music` assets, replace `mipmap-*` images; otherwise keep current icons but rename strings.
 - Credits/Attribution:
-  - Add a small credit string in Settings, e.g., `Built on top of ArchiveTune` with a link to the GitHub repo (optional). Keep it subtle.
+  - Add a small credit string in Settings, keep it subtle.
 
 ### 5) Remove About pages
 - Locate About screens (likely `AboutActivity`, `AboutFragment`, or Settings preference screens with `about_*` strings).

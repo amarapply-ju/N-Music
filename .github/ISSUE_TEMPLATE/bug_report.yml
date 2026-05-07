@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report a bug to help us improve ArchiveTune
+description: Report a bug to help us improve N-Music
 labels: [BUG]
 body:
   - type: checkboxes
@@ -10,7 +10,7 @@ body:
         Before submitting, please ensure you have completed the following steps. 
         Incomplete reports or reports for versions other than the latest debug build may be closed.
       options:
-        - label: I have tested this bug on the [latest debug version](https://github.com/koiverse/ArchiveTune/actions).
+        - label: I have tested this bug on the [latest debug version](https://github.com/amarapply-ju/N-Music/actions).
           required: true
         - label: I have searched existing issues (open and closed) to avoid duplicates.
           required: true
@@ -31,7 +31,6 @@ body:
         - ⚙️ Settings
         - 📥 Downloads
         - 🎨 UI / Visuals
-        - 🔌 Integrations (Discord/LastFM/ListenBrainz)
         - 📱 Widgets / Notification
         - ❓ Other
     validations:
@@ -94,7 +93,7 @@ body:
   - type: input
     id: environment-app-version
     attributes:
-      label: ArchiveTune Version
+      label: N-Music Version
       description: Found in Settings -> About.
       placeholder: e.g., 0.5.3 (Debug)
     validations:
