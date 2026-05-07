@@ -18,9 +18,12 @@ def escape_parentheses(text):
     return re.sub(r'([()])', r'\\\1', text)
 
 def main():
-    bot_token = os.environ['BOT_TOKEN']
-    chat_id = os.environ['CHAT_ID']
-    topic_id = os.environ.get('TOPIC_ID')
+    bot_token = os.getenv('BOT_TOKEN') or os.getenv('TELEGRAM_BOT_TOKEN')
+    chat_id = os.getenv('CHAT_ID') or os.getenv('TELEGRAM_CHAT_ID')
+    topic_id = os.getenv('TOPIC_ID') or os.getenv('TELEGRAM_TOPIC_ID')
+
+    if not bot_token or not chat_id:
+        raise SystemExit('Missing Telegram bot configuration: set BOT_TOKEN/CHAT_ID or TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID')
 
     commit_author, commit_message, commit_hash, commit_hash_short = get_git_commit_info()
 

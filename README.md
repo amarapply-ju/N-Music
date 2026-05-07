@@ -11,7 +11,7 @@
   </p>
 
   <p align="center">
-    <a href="https://archivetune.koiiverse.cloud"><b>Official Website</b></a> •
+    <a href="https://github.com/amarapply-ju/N-Music"><b>Project Repository</b></a> •
     <a href="#features"><b>Features</b></a> •
     <a href="PRIVACY.md"><b>Privacy</b></a> •
     <a href="#download-now"><b>Download</b></a> •

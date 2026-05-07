@@ -11,10 +11,10 @@ def get_git_commit_info():
     return commit_author, commit_message, commit_hash, commit_hash_short
 
 # Telegram API credentials
-api_id = int(os.getenv("API_ID"))
-api_hash = os.getenv("API_HASH")
-bot_token = os.getenv("BOT_TOKEN")
-group_id = int(os.getenv("CHAT_ID"))
+api_id = int(os.getenv("API_ID") or os.getenv("TELEGRAM_API_ID"))
+api_hash = os.getenv("API_HASH") or os.getenv("TELEGRAM_API_HASH")
+bot_token = os.getenv("BOT_TOKEN") or os.getenv("TELEGRAM_BOT_TOKEN")
+group_id = int(os.getenv("CHAT_ID") or os.getenv("TELEGRAM_CHAT_ID"))
 
 # File path pattern(s) to send
 apk_path = os.getenv("APK_PATH")
@@ -107,7 +107,7 @@ async def send_files(file_paths):
     print(f"Sending {len(existing_files)} files to the Telegram group")
     device_names = sorted({extract_device_name(path) for path in existing_files})
     abi_names = sorted({extract_abi_name(path) for path in existing_files})
-    topic_id = os.getenv("TOPIC_ID")
+    topic_id = os.getenv("TOPIC_ID") or os.getenv("TELEGRAM_TOPIC_ID")
 
     message = (
         f"**Commit by:** {commit_author}\n"
