@@ -63,6 +63,11 @@
       --red:#D71921;
       --red-glow:rgba(215,25,33,.35);
     }
+
+    /* Ensure header is pure black in manual dark theme */
+    html.dark-theme header.nav {
+      background: #000;
+    }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--fg);font-family:var(--mono);-webkit-font-smoothing:antialiased;}
   html{scroll-behavior:smooth}
@@ -293,36 +298,7 @@
     }
     .phone.alt2 .screen {
       background:linear-gradient(180deg,#f5f5f5, #ede8e8);
-      // Apply theme class
-      const applyTheme = (theme) => {
-        html.classList.remove('light-theme', 'dark-theme');
-        if (theme === 'light') {
-          html.classList.add('light-theme');
-        } else {
-          html.classList.add('dark-theme');
-        }
-      };
-
-      // Load and apply saved theme
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        applyTheme(savedTheme);
-        updateThemeIcon(savedTheme);
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = prefersDark ? 'dark' : 'light';
-        applyTheme(theme);
-        updateThemeIcon(theme);
       }
-
-      // Update toggle handler
-      themeToggle.addEventListener('click', () => {
-        const current = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        const next = current === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-        updateThemeIcon(next);
-      });
   }
 
   /* ---------- Open source ---------- */
@@ -652,77 +628,39 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Theme Toggle
+  // Theme Toggle - single, clean implementation
   const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
-  
-  // Load saved theme preference or detect system preference
-  const loadTheme = () => {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      html.style.colorScheme = saved;
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      html.style.colorScheme = prefersDark ? 'dark' : 'light';
-    }
+
+  const applyTheme = (theme) => {
+    html.classList.remove('light-theme', 'dark-theme');
+    html.classList.add(theme === 'light' ? 'light-theme' : 'dark-theme');
   };
-  
-  // Initialize theme
-  loadTheme();
-  
-  // Toggle theme on button click
-  themeToggle.addEventListener('click', () => {
-    const current = html.style.colorScheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.style.colorScheme = next;
-    localStorage.setItem('theme', next);
-    updateThemeIcon(next);
-  });
-  
-  // Update icon based on current theme
+
   const updateThemeIcon = (theme) => {
-    themeToggle.querySelector('.icon').textContent = theme === 'dark' ? '◐' : '◑';
+    if (!themeToggle) return;
+    const icon = themeToggle.querySelector('.icon');
+    if (icon) icon.textContent = theme === 'dark' ? '◐' : '◑';
   };
-  
-  // Set initial icon
-  const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  updateThemeIcon(currentTheme);
 
-    // Update icon based on current theme
-    const updateThemeIcon = (theme) => {
-      themeToggle.querySelector('.icon').textContent = theme === 'dark' ? '◐' : '◑';
-    };
+  const initTheme = () => {
+    const saved = localStorage.getItem('theme');
+    const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(theme);
+    updateThemeIcon(theme);
+  };
 
-    // Apply theme class to actually change colors
-    const applyTheme = (theme) => {
-      html.classList.remove('light-theme', 'dark-theme');
-      if (theme === 'light') {
-        html.classList.add('light-theme');
-      } else {
-        html.classList.add('dark-theme');
-      }
-    };
-
-    // Load and apply saved theme or system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      applyTheme(savedTheme);
-      updateThemeIcon(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = prefersDark ? 'dark' : 'light';
-      applyTheme(theme);
-      updateThemeIcon(theme);
-    }
-
-    // Toggle theme on button click
+  if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const current = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const current = localStorage.getItem('theme') || (html.classList.contains('dark-theme') ? 'dark' : 'light');
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
       localStorage.setItem('theme', next);
       updateThemeIcon(next);
     });
+  }
+
+  initTheme();
 </script>
 </body>
 </html>
