@@ -828,31 +828,6 @@ private fun SuccessActions(
                 )
             }
         }
-
-        if (!result.shazamUrl.isNullOrBlank()) {
-            FilledTonalButton(
-                onClick = {
-                    context.startActivity(
-                        Intent(Intent.ACTION_VIEW, Uri.parse(result.shazamUrl)),
-                    )
-                },
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
-                shapes = ButtonDefaults.shapes(),
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.arrow_forward),
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp),
-                )
-                Spacer(modifier = Modifier.width(10.dp))
-                Text(
-                    text = stringResource(R.string.music_recognition_open_shazam),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    softWrap = false,
-                )
-            }
-        }
     }
 }
 
@@ -935,31 +910,7 @@ private fun ResultCard(
                             isrc = result.isrc,
                         )
 
-                        if (!result.shazamUrl.isNullOrBlank()) {
-                            Spacer(modifier = Modifier.height(12.dp))
-                            OutlinedButton(
-                                onClick = {
-                                    context.startActivity(
-                                        Intent(Intent.ACTION_VIEW, Uri.parse(result.shazamUrl)),
-                                    )
-                                },
-                                modifier = Modifier.fillMaxWidth().heightIn(min = 44.dp),
-                                shapes = ButtonDefaults.shapes(),
-                            ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.link),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(18.dp),
-                                )
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Text(
-                                    text = stringResource(R.string.music_recognition_open_shazam),
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis,
-                                    softWrap = false,
-                                )
-                            }
-                        }
+
                     }
                 } else {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -996,23 +947,7 @@ private fun ResultCard(
                             )
                         }
 
-                        if (!result.shazamUrl.isNullOrBlank()) {
-                            OutlinedButton(
-                                onClick = {
-                                    context.startActivity(
-                                        Intent(Intent.ACTION_VIEW, Uri.parse(result.shazamUrl)),
-                                    )
-                                },
-                                modifier = Modifier.heightIn(min = 40.dp),
-                                shapes = ButtonDefaults.shapes(),
-                            ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.link),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(18.dp),
-                                )
-                            }
-                        }
+
                     }
                 }
             }

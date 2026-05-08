@@ -371,10 +371,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Create Release
+      - name: Prepare and Create Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
           cat > release_notes.md <<EOF
           ${{ steps.build_changelog.outputs.changelog }}
           EOF
@@ -384,11 +385,30 @@ jobs:
             --notes-file release_notes.md \
             --target "${{ github.sha }}"
 
-      - name: Upload APK assets to Release
+      - name: Find and Upload APK assets to Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release upload "v${{ needs.check-version.outputs.new_version }}" \
-            downloaded_artifacts/app-*-release/*.apk \
-            --clobber
+          set -euo pipefail
+          
+          # Find all APK files recursively in downloaded_artifacts
+          APK_FILES=$(find downloaded_artifacts -type f -name "*.apk" 2>/dev/null | sort)
+          
+          if [ -z "$APK_FILES" ]; then
+            echo "ERROR: No APK files found in downloaded_artifacts!"
+            echo "Directory structure:"
+            find downloaded_artifacts -type f -o -type d 2>/dev/null | head -30 || true
+            exit 1
+          fi
+          
+          echo "Found APK files:"
+          echo "$APK_FILES"
+          
+          # Upload each APK to the release
+          echo "$APK_FILES" | while read -r apk; do
+            if [ -n "$apk" ] && [ -f "$apk" ]; then
+              echo "Uploading: $apk"
+              gh release upload "v${{ needs.check-version.outputs.new_version }}" "$apk" --clobber
+            fi
+          done
             

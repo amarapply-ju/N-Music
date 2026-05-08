@@ -113,6 +113,7 @@ import moe.koiverse.archivetune.LocalDatabase
 import moe.koiverse.archivetune.LocalDownloadUtil
 import moe.koiverse.archivetune.LocalPlayerConnection
 import moe.koiverse.archivetune.R
+import moe.koiverse.archivetune.musicrecognition.openMusicRecognition
 import moe.koiverse.archivetune.constants.ArtistSeparatorsKey
 import moe.koiverse.archivetune.constants.ExternalDownloaderEnabledKey
 import moe.koiverse.archivetune.constants.ExternalDownloaderPackageKey
@@ -468,6 +469,23 @@ fun PlayerMenu(
                             ),
                         )
                     }
+                    add(
+                        NewAction(
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.mic),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(28.dp),
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            },
+                            text = stringResource(R.string.music_recognition),
+                            onClick = {
+                                navController.openMusicRecognition()
+                                onDismiss()
+                            }
+                        ),
+                    )
                     add(
                         NewAction(
                             icon = {
