@@ -1,58 +1,38 @@
 # GitHub Pages Setup Guide
 
-## What We've Set Up
+## What’s included
 
 ### 1. Landing Page
-A beautiful, Nothing OS-inspired landing page has been created in the `docs/` folder:
-- **File**: `docs/index.html`
-- **Features**: Download links, features showcase, Nothing OS story
-- **Styling**: Minimal, clean design with dark theme
+A clean landing page lives in `docs/index.html`.
+- It introduces the project.
+- It sends users to GitHub Releases for downloads.
+- It keeps the repo UI lightweight and static.
 
-### 2. GitHub Pages Configuration
-The site is configured to serve from the `docs/` folder:
+### 2. Pages Configuration
+The site is ready to be served from the `docs/` folder using GitHub Pages.
 - **Config**: `docs/_config.yml`
-- **URL**: Will be available at `https://koiverse.github.io/ArchiveTune/`
+- **Source**: `main` branch, `/docs` folder
 
-## To Enable GitHub Pages
+## To enable GitHub Pages
 
-1. Go to your GitHub repository settings
-2. Navigate to **Settings → Pages**
-3. Under "Build and deployment":
-   - Set **Source** to: `Deploy from a branch`
-   - Set **Branch** to: `main` and folder to `/docs`
-   - Click **Save**
-4. Wait a few minutes for GitHub to build and deploy
-5. Your site will be available at: `https://alimohsenmaruf.github.io/N-Music/`
+1. Open the repository on GitHub.
+2. Go to **Settings → Pages**.
+3. Set **Source** to `Deploy from a branch`.
+4. Choose **Branch** = `main` and **Folder** = `/docs`.
+5. Save the setting and wait for GitHub to finish the build.
 
-## Optional: Custom Domain
+## Repository description
 
-If you have a custom domain:
-1. Update the `docs/CNAME` file with your domain
-2. Configure DNS records in your domain provider
-3. GitHub will automatically enable HTTPS
+Suggested description:
+- **Nothing OS inspired music player for Android**
 
-## Repository Description
+## Download source
 
-Update your repository description (on GitHub repo page):
-- **Title**: N-Music
-- **Description**: Nothing OS inspired music player for Android - Privacy-focused, ad-free, beautiful design
-- **Website**: Link to your GitHub Pages URL
+There is only one supported download source right now:
+- **GitHub Releases**: `https://github.com/koiverse/ArchiveTune/releases/latest`
 
-## README Changes
+## Notes
 
-The README has been modernized to:
-- Remove old badges and achievements
-- Focus on key features
-- Direct users to the website for downloads
-- Maintain essential documentation links
-
-## Next Steps
-
-1. ✅ Enable GitHub Pages in repository settings
-2. Create your first release with build artifacts
-3. Update repository description in settings
-4. Share the landing page URL with users
-
----
-
-For more information about GitHub Pages, see: https://docs.github.com/en/pages
+- No extra Pages deployment workflow is needed if you are using GitHub Pages from the repository settings.
+- The release workflow already creates GitHub Releases on version bumps.
+- The app itself uses external APIs and services, but there is no separate repo-hosted backend module.

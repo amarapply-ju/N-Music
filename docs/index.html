@@ -1,415 +1,420 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N-Music - Nothing OS Inspired Music Player</title>
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="N-Music: A Nothing OS-inspired music player for Android. Privacy-focused, clean design, ad-free playback with YouTube Music integration.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #000000;
-            color: #FFFFFF;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: #FFFFFF;
-        }
-        
-        h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-        
-        .tagline {
-            font-size: 18px;
-            color: #888888;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .version {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: #AAAAAA;
-            margin-bottom: 40px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 28px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: #FFFFFF;
-            color: #000000;
-        }
-        
-        .btn-primary:hover {
-            background: #F0F0F0;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .downloads {
-            padding: 60px 20px;
-        }
-        
-        .downloads h2 {
-            font-size: 32px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-        
-        .download-card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .download-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-4px);
-        }
-        
-        .download-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-        
-        .download-card p {
-            font-size: 14px;
-            color: #888888;
-            margin-bottom: 20px;
-        }
-        
-        .download-card .btn {
-            width: 100%;
-            justify-content: center;
-        }
-        
-        .features {
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .features h2 {
-            font-size: 32px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-        
-        .feature {
-            padding: 24px;
-        }
-        
-        .feature h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #FFFFFF;
-        }
-        
-        .feature p {
-            font-size: 14px;
-            color: #888888;
-            line-height: 1.8;
-        }
-        
-        .feature-icon {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 20px;
-        }
-        
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #666666;
-            font-size: 14px;
-        }
-        
-        .links {
-            margin-bottom: 20px;
-        }
-        
-        .links a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 16px;
-            transition: color 0.3s;
-        }
-        
-        .links a:hover {
-            color: #888888;
-        }
-        
-        .nothing-inspired {
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.03);
-        }
-        
-        .nothing-inspired h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .nothing-story {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        .nothing-story p {
-            font-size: 16px;
-            color: #CCCCCC;
-            line-height: 1.9;
-            margin-bottom: 12px;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-            
-            .tagline {
-                font-size: 16px;
-            }
-            
-            .download-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>N-Music — A Nothing-styled music player. Free. Open source.</title>
+<meta name="description" content="N-Music is a free, open-source, ad-free YouTube Music wrapper styled after Nothing OS. Download the APK and reclaim your sound." />
+<meta property="og:title" content="N-Music — Nothing OS styled music player" />
+<meta property="og:description" content="Free, open-source, no ads. A Spotify alternative with Nothing OS vibes." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='8' cy='8' r='2'/%3E%3Ccircle cx='16' cy='8' r='2'/%3E%3Ccircle cx='24' cy='8' r='2'/%3E%3Ccircle cx='8' cy='16' r='2'/%3E%3Ccircle cx='24' cy='16' r='2'/%3E%3Ccircle cx='8' cy='24' r='2'/%3E%3Ccircle cx='16' cy='24' r='2'/%3E%3Ccircle cx='24' cy='24' r='2'/%3E%3C/g%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --bg:#000;
+    --fg:#f5f5f5;
+    --muted:#7a7a7a;
+    --line:#1a1a1a;
+    --line-2:#262626;
+    --red:#D71921;
+    --red-glow:rgba(215,25,33,.35);
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --dot:'VT323', 'JetBrains Mono', monospace; /* dot-matrix-feel free font */
+    --maxw:1200px;
+    --pad: clamp(16px, 4vw, 40px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--fg);font-family:var(--mono);-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth}
+  body{overflow-x:hidden;line-height:1.5;font-size:14px;letter-spacing:.01em}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  ::selection{background:var(--red);color:#fff}
+
+  /* ---------- Background dot grid ---------- */
+  .grid-bg{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    background-position: 0 0;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+    animation: gridPulse 8s ease-in-out infinite;
+  }
+  @keyframes gridPulse{
+    0%,100%{opacity:.55}
+    50%{opacity:.85}
+  }
+  .scanline{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 2px, transparent 2px 4px);
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  section{padding: clamp(64px, 10vw, 140px) 0;border-top:1px solid var(--line)}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:10px}
+  .label::before{content:"";width:6px;height:6px;background:var(--red);border-radius:50%;box-shadow:0 0 12px var(--red-glow)}
+  h1,h2,h3{font-family:var(--dot);font-weight:400;letter-spacing:.04em;line-height:.95;text-transform:uppercase}
+  h1{font-size: clamp(64px, 16vw, 220px)}
+  h2{font-size: clamp(40px, 7vw, 88px)}
+  h3{font-size: clamp(22px, 2.4vw, 32px)}
+  p{color:#cfcfcf}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(0,0,0,.6);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--dot);font-size:22px;letter-spacing:.15em;display:flex;align-items:center;gap:10px}
+  .brand .live{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 14px var(--red);animation:blink 1.6s steps(2) infinite}
+  @keyframes blink{50%{opacity:.25}}
+  .nav-links{display:flex;gap:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#bdbdbd}
+  .nav-links a{position:relative;padding:6px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--red);transition:width .25s ease}
+  .nav-links a:hover{color:#fff}
+  .nav-links a:hover::after{width:100%}
+  @media (max-width:720px){ .nav-links{display:none} }
+
+  /* ---------- Buttons ---------- */
+  .btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border:1px solid var(--fg);font-family:var(--mono);font-size:12px;letter-spacing:.25em;text-transform:uppercase;overflow:hidden;transition:color .3s ease;border-radius:999px}
+  .btn .arr{transition:transform .3s ease}
+  .btn::before{content:"";position:absolute;inset:0;background:var(--fg);transform:translateY(101%);transition:transform .35s cubic-bezier(.7,0,.2,1);z-index:-1}
+  .btn:hover{color:#000}
+  .btn:hover::before{transform:translateY(0)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn.primary{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 0 0 var(--red-glow)}
+  .btn.primary::before{background:#fff}
+  .btn.primary:hover{color:#000}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding-top: clamp(80px, 12vw, 140px);padding-bottom: clamp(80px, 12vw, 140px);border-top:0;overflow:hidden}
+  .hero-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:48px}
+  .hero h1{position:relative}
+  .hero h1 .ch{display:inline-block;opacity:0;transform:translateY(.3em);animation:reveal .6s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes reveal{to{opacity:1;transform:none}}
+  .tagline{margin-top:32px;max-width:620px;font-size:16px;color:#dcdcdc}
+  .tagline strong{color:var(--red);font-weight:500}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+  .hero-stats{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);padding-top:28px}
+  .hero-stats div{font-family:var(--dot);font-size:32px}
+  .hero-stats span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+  @media (max-width:720px){ .hero-stats{grid-template-columns:repeat(2,1fr)} }
+
+  .glyph{position:absolute;right:var(--pad);top:30%;width:240px;height:240px;border:1px solid var(--line-2);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:spin 22s linear infinite;opacity:.7}
+  .glyph::before{content:"";width:160px;height:160px;border:1px solid var(--red);border-radius:50%;box-shadow:0 0 40px var(--red-glow), inset 0 0 40px var(--red-glow)}
+  .glyph::after{content:"";position:absolute;width:6px;height:6px;background:var(--red);top:10px;border-radius:50%;box-shadow:0 0 16px var(--red)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:1024px){.glyph{display:none}}
+
+  /* ---------- Marquee ---------- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;background:#050505}
+  .marquee-track{display:flex;gap:48px;white-space:nowrap;animation:slide 30s linear infinite;font-family:var(--dot);font-size:24px;letter-spacing:.15em}
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px;color:#eee}
+  .marquee-track span::after{content:"●";color:var(--red);margin-left:48px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- Section header ---------- */
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:56px}
+  .sec-head p{max-width:420px;color:var(--muted)}
+
+  /* ---------- Features ---------- */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .feature{background:#050505;padding:36px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;transition:background .3s}
+  .feature:hover{background:#0c0c0c}
+  .feature .num{font-family:var(--dot);font-size:14px;color:var(--red);letter-spacing:.2em}
+  .feature h3{margin:24px 0 12px}
+  .feature p{font-size:13px;color:#aaa}
+  .feature .ico{width:36px;height:36px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:2px}
+  .feature .ico i{background:#fff;border-radius:50%;opacity:.85}
+  @media (max-width:1024px){.features{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.features{grid-template-columns:1fr}}
+
+  /* ---------- Screenshots ---------- */
+  .screens{display:flex;gap:32px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px;scrollbar-width:thin;scrollbar-color:#333 transparent}
+  .phone{flex:0 0 280px;scroll-snap-align:center;aspect-ratio:9/19.5;border:2px solid #2a2a2a;border-radius:38px;padding:10px;background:#0a0a0a;position:relative;box-shadow:0 30px 80px -30px rgba(215,25,33,.25)}
+  .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:60px;height:6px;background:#000;border-radius:6px;z-index:2}
+  .screen{height:100%;border-radius:30px;overflow:hidden;position:relative;background:radial-gradient(120% 80% at 50% 0%, rgba(215,25,33,.3), transparent 60%), #0a0a0a;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 18px}
+  .screen .ttl{font-family:var(--dot);font-size:22px;color:#fff;letter-spacing:.08em}
+  .screen .sub{font-size:10px;color:#999;margin-top:4px;letter-spacing:.2em;text-transform:uppercase}
+  .screen .bars{display:flex;gap:4px;align-items:flex-end;height:30px;margin-top:18px}
+  .screen .bars i{flex:1;background:var(--red);opacity:.7;animation:eq 1s ease-in-out infinite alternate}
+  .screen .bars i:nth-child(2){animation-delay:.1s}
+  .screen .bars i:nth-child(3){animation-delay:.2s}
+  .screen .bars i:nth-child(4){animation-delay:.3s}
+  .screen .bars i:nth-child(5){animation-delay:.4s}
+  .screen .bars i:nth-child(6){animation-delay:.15s}
+  .screen .bars i:nth-child(7){animation-delay:.25s}
+  @keyframes eq{from{height:10%}to{height:100%}}
+  .phone.alt .screen{background:radial-gradient(120% 80% at 50% 100%, rgba(255,255,255,.12), transparent 60%), #050505}
+  .phone.alt2 .screen{background:linear-gradient(180deg,#0a0a0a, #1a0306)}
+
+  /* ---------- Open source ---------- */
+  .os{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  .os blockquote{font-family:var(--dot);font-size:clamp(28px, 4vw, 48px);line-height:1.05;letter-spacing:.03em}
+  .os blockquote em{color:var(--red);font-style:normal}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .badges img{height:24px}
+  .os .panel{border:1px solid var(--line);padding:32px;background:#050505}
+  .os .panel ul{list-style:none;display:grid;gap:14px;font-size:13px;color:#cfcfcf}
+  .os .panel li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:10px}
+  .os .panel li span:last-child{color:#fff}
+  @media (max-width:900px){.os{grid-template-columns:1fr}}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:grid;gap:0;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line);padding:24px 0}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--dot);font-size:24px;letter-spacing:.04em}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{width:18px;height:18px;position:relative;flex:0 0 auto}
+  summary .plus::before,summary .plus::after{content:"";position:absolute;background:var(--red);left:50%;top:50%}
+  summary .plus::before{width:18px;height:1px;transform:translate(-50%,-50%)}
+  summary .plus::after{width:1px;height:18px;transform:translate(-50%,-50%);transition:transform .3s}
+  details[open] summary .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+  details p{margin-top:14px;color:#aaa;max-width:680px}
+
+  /* ---------- Download band ---------- */
+  .dl{background:linear-gradient(135deg, #b40d15 0%, var(--red) 60%, #ff2530 100%);position:relative;overflow:hidden;border:0}
+  .dl::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle, rgba(0,0,0,.25) 1px, transparent 1.2px);background-size:18px 18px;mix-blend-mode:multiply;opacity:.5}
+  .dl .wrap{position:relative;display:grid;grid-template-columns:1.4fr .6fr;gap:32px;align-items:center}
+  .dl h2{color:#fff}
+  .dl p{color:rgba(255,255,255,.85);max-width:520px;margin-top:16px}
+  .dl .btn{border-color:#fff;color:#fff}
+  .dl .btn::before{background:#000}
+  .dl .btn:hover{color:#fff}
+  .dl-meta{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-top:18px}
+  .dl-side{font-family:var(--dot);font-size:120px;color:rgba(255,255,255,.95);text-align:right;line-height:.9}
+  .dl-side small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-top:8px}
+  @media (max-width:760px){.dl .wrap{grid-template-columns:1fr}.dl-side{text-align:left;font-size:80px}}
+
+  /* ---------- Footer ---------- */
+  footer{padding:48px 0 32px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  .foot a:hover{color:#fff}
+  .foot .legal{font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">♪</div>
-            <h1>N-Music</h1>
-            <p class="tagline">Nothing OS inspired music player for Android</p>
-            <div class="version">Version 13.2.0</div>
-            <div class="cta-buttons">
-                <a href="#downloads" class="btn btn-primary">Download Now</a>
-                <a href="https://github.com/koiverse/ArchiveTune/releases/latest" class="btn btn-secondary">View Releases</a>
-            </div>
-        </div>
-    </header>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
 
-    <section class="nothing-inspired">
-        <div class="container">
-            <h2>Nothing OS Inspired</h2>
-            <div class="nothing-story">
-                <p>🎵 N-Music is built with the Nothing OS design philosophy in mind—minimalist, bold, and unapologetically different.</p>
-                <p>We embrace the elegant dot-matrix aesthetic, glassmorphic components, and clean typography that define Nothing's vision. Every element serves a purpose.</p>
-                <p>Privacy-focused. Ad-free. Beautiful. This is music the way it should be.</p>
-            </div>
-        </div>
-    </section>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="live"></span> N—MUSIC</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#screens">Screens</a>
+      <a href="#source">Source</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download">Download</a>
+    </nav>
+  </div>
+</header>
 
-    <section class="downloads" id="downloads">
-        <div class="container">
-            <h2>Get N-Music</h2>
-            <div class="download-grid">
-                <div class="download-card">
-                    <h3>📱 GitHub Releases</h3>
-                    <p>Download the latest stable build directly from GitHub</p>
-                    <a href="https://github.com/koiverse/ArchiveTune/releases/latest" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="top">
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-meta">
+      <span>[ N-MUSIC / V1.0 ]</span>
+      <span id="clock">— : —</span>
+      <span>OPEN SOURCE · MIT</span>
+    </div>
+    <h1 id="heroTitle" aria-label="N-Music">N-MUSIC</h1>
+    <p class="tagline">A <strong>Nothing-styled</strong> music player. A simple YouTube Music wrapper — <strong>free</strong>, <strong>open source</strong>, made with <strong>no ads</strong>. Our take on a Spotify alternative, designed for the dot-matrix soul.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#download" data-href-release><span>Download APK</span> <span class="arr">→</span></a>
+      <a class="btn" href="#source" data-href-repo><span>View Source</span> <span class="arr">↗</span></a>
+    </div>
+    <div class="hero-stats">
+      <div>00<span>Ads served</span></div>
+      <div>100%<span>Open source</span></div>
+      <div>~8MB<span>APK size</span></div>
+      <div>∞<span>Free forever</span></div>
+    </div>
+    <div class="glyph" aria-hidden="true"></div>
+  </section>
 
-    <section class="features">
-        <div class="container">
-            <h2>Why N-Music?</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Ad-Free Playback</h3>
-                    <p>Enjoy uninterrupted music with background listening support. Your listening, your way.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>No tracking, no invasive permissions. Your music history stays yours alone.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">✨</div>
-                    <h3>Beautiful Design</h3>
-                    <p>Nothing OS inspired aesthetic with glassmorphic components and dot-matrix typography.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎚️</div>
-                    <h3>Full Control</h3>
-                    <p>Equalizer, crossfade, playback speed, and deep customization for power users.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📝</div>
-                    <h3>Live Lyrics</h3>
-                    <p>Synced lyrics with translation and romanization support for global artists.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Dynamic Colors</h3>
-                    <p>Album art-powered color themes and Material 3 design with full customization.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>OPEN SOURCE</span><span>NO ADS</span><span>NO TRACKING</span><span>YT MUSIC</span><span>NOTHING OS VIBES</span><span>MADE WITH ♥</span>
+      <span>OPEN SOURCE</span><span>NO ADS</span><span>NO TRACKING</span><span>YT MUSIC</span><span>NOTHING OS VIBES</span><span>MADE WITH ♥</span>
+    </div>
+  </div>
 
-    <section class="features">
-        <div class="container">
-            <h2>Integrations</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🎵</div>
-                    <h3>YouTube Music</h3>
-                    <p>Full integration with your YouTube Music library, playlists, and recommendations.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📊</div>
-                    <h3>Last.fm Scrobbling</h3>
-                    <p>Track your listening history and get personalized recommendations.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🧠</div>
-                    <h3>ListenBrainz</h3>
-                    <p>Open-source music metadata database integration for better recognition.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Discord Rich Presence</h3>
-                    <p>Show your friends what you're listening to in real-time on Discord.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Music Recognition</h3>
-                    <p>Recognize songs playing around you with integrated music identification.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Local Files</h3>
-                    <p>Play music from your device storage alongside YouTube Music content.</p>
-                </div>
-            </div>
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div>
+          <span class="label">[ 01 / Features ]</span>
+          <h2 style="margin-top:18px">Less.<br/>But better.</h2>
         </div>
-    </section>
+        <p>Every pixel earns its place. Six things N-Music does, and nothing it doesn't.</p>
+      </div>
+      <div class="features">
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 01</span><h3>YT Music Engine</h3><p>Stream the full YouTube Music catalogue without the noise.</p></div></article>
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 02</span><h3>Nothing OS UI</h3><p>Dot-matrix typography, monochrome canvas, glyph accents.</p></div></article>
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 03</span><h3>Glyph Visualizer</h3><p>A reactive equalizer that breathes with the beat.</p></div></article>
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 04</span><h3>Offline Queue</h3><p>Stack the night's playlist. Save data. Save vibes.</p></div></article>
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 05</span><h3>Zero Ads. Zero Tracking.</h3><p>No accounts. No telemetry. Music, undisturbed.</p></div></article>
+        <article class="feature"><div><div class="ico"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">/ 06</span><h3>Featherweight APK</h3><p>~8MB. Boots fast. Stays fast. No bloat.</p></div></article>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <div class="links">
-                <a href="https://github.com/koiverse/ArchiveTune/releases/latest">Releases</a>
-                <a href="https://github.com/koiverse/ArchiveTune/blob/main/PRIVACY.md">Privacy</a>
-                <a href="https://github.com/koiverse/ArchiveTune/blob/main/LICENSE">License</a>
-                <a href="https://instagram.com/ali.mohsen.maruf">Support</a>
-            </div>
-            <p>N-Music is an independent third-party client, not affiliated with Google LLC or YouTube.<br>
-            Built with ❤️ using Kotlin and Jetpack Compose | Material Design 3 + Nothing OS Inspiration</p>
+  <!-- SCREENS -->
+  <section id="screens">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div>
+          <span class="label">[ 02 / Screens ]</span>
+          <h2 style="margin-top:18px">Pure form.</h2>
         </div>
-    </footer>
+        <p>Three glances at the player. Built for one-handed dark-mode glory.</p>
+      </div>
+      <div class="screens">
+        <div class="phone"><div class="screen"><span class="sub">Now Playing</span><span class="ttl">DOT MATRIX</span><span class="sub" style="margin-top:2px">Nothing Tape · Side A</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+        <div class="phone alt"><div class="screen"><span class="sub">Library</span><span class="ttl">YOUR SOUND</span><span class="sub" style="margin-top:2px">128 tracks · 9 playlists</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+        <div class="phone alt2"><div class="screen"><span class="sub">Search</span><span class="ttl">FIND IT</span><span class="sub" style="margin-top:2px">YT Music · instant</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section id="source">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div>
+          <span class="label">[ 03 / Open Source ]</span>
+        </div>
+      </div>
+      <div class="os">
+        <div>
+          <blockquote>Music should be <em>free</em>. Software should be <em>honest</em>. So we built both.</blockquote>
+          <div class="badges">
+            <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-D71921?style=flat-square&labelColor=000" />
+            <img alt="Platform Android" src="https://img.shields.io/badge/platform-Android-fff?style=flat-square&labelColor=000" />
+            <img alt="No Ads" src="https://img.shields.io/badge/ads-zero-D71921?style=flat-square&labelColor=000" />
+            <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-fff?style=flat-square&labelColor=000" />
+          </div>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn primary" href="#" data-href-repo><span>Star on GitHub</span><span class="arr">★</span></a>
+            <a class="btn" href="#" data-href-issues><span>Open an Issue</span><span class="arr">↗</span></a>
+          </div>
+        </div>
+        <div class="panel">
+          <ul>
+            <li><span>License</span><span>MIT</span></li>
+            <li><span>Platform</span><span>Android 8+</span></li>
+            <li><span>Backend</span><span>YT Music</span></li>
+            <li><span>Telemetry</span><span>None</span></li>
+            <li><span>Built by</span><span>The community</span></li>
+            <li><span>Status</span><span style="color:var(--red)">● Live</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div>
+          <span class="label">[ 04 / FAQ ]</span>
+          <h2 style="margin-top:18px">Questions?</h2>
+        </div>
+        <p>The short answers. The longer ones live on GitHub.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Is N-Music really free?<span class="plus" aria-hidden="true"></span></summary><p>Yes. Free as in beer and free as in freedom. MIT licensed. No paywalls, no premium tier, no nonsense.</p></details>
+        <details><summary>How is it different from Spotify?<span class="plus" aria-hidden="true"></span></summary><p>No subscription, no ads, no tracking, no account required. It's a clean Nothing-styled wrapper around the YouTube Music catalogue.</p></details>
+        <details><summary>Where does the music come from?<span class="plus" aria-hidden="true"></span></summary><p>YouTube Music's public catalogue. N-Music is a player; it does not host or redistribute audio.</p></details>
+        <details><summary>iOS support?<span class="plus" aria-hidden="true"></span></summary><p>Not yet. Android-first. iOS is on the roadmap if the community wants to help.</p></details>
+        <details><summary>How can I contribute?<span class="plus" aria-hidden="true"></span></summary><p>Star the repo, file issues, send PRs. Designers and devs welcome. Every dot counts.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download" class="dl">
+    <div class="wrap">
+      <div>
+        <span class="label" style="color:#fff">[ 05 / Download ]</span>
+        <h2 style="margin-top:18px">Pocket-sized.<br/>Pocket-free.</h2>
+        <p>Grab the latest signed APK from GitHub Releases. Sideload, open, play.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+          <a class="btn" href="#" data-href-release><span>Download APK</span><span class="arr">↓</span></a>
+          <a class="btn" href="#" data-href-repo><span>All releases</span><span class="arr">↗</span></a>
+        </div>
+        <div class="dl-meta">Requires Android 8.0+ · ~8MB · SHA-256 verified</div>
+      </div>
+      <div class="dl-side">v1.0<small>Latest build</small></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand"><span class="live"></span> N—MUSIC</div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <a href="#" data-href-repo>GitHub</a>
+      <a href="#" data-href-release>Releases</a>
+      <a href="#" data-href-issues>Issues</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="legal">© <span id="yr"></span> N-Music · MIT · Not affiliated with Nothing Technology Ltd.</div>
+  </div>
+</footer>
+
+<script>
+  // ---- Configure your repo once ----
+  const REPO = "https://github.com/your-handle/n-music"; // <-- replace
+  const RELEASE_URL = REPO + "/releases/latest";
+  const ISSUES_URL  = REPO + "/issues";
+  document.querySelectorAll('[data-href-repo]').forEach(a => a.href = REPO);
+  document.querySelectorAll('[data-href-release]').forEach(a => a.href = RELEASE_URL);
+  document.querySelectorAll('[data-href-issues]').forEach(a => a.href = ISSUES_URL);
+
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Clock
+  const clk = document.getElementById('clock');
+  const tick = () => {
+    const d = new Date();
+    clk.textContent = String(d.getHours()).padStart(2,'0') + ' : ' + String(d.getMinutes()).padStart(2,'0') + ' : ' + String(d.getSeconds()).padStart(2,'0');
+  };
+  tick(); setInterval(tick, 1000);
+
+  // Hero title stagger
+  const t = document.getElementById('heroTitle');
+  const text = t.textContent;
+  t.textContent = '';
+  [...text].forEach((c, i) => {
+    const s = document.createElement('span');
+    s.className = 'ch';
+    s.textContent = c === ' ' ? '\u00A0' : c;
+    s.style.animationDelay = (i * 70) + 'ms';
+    t.appendChild(s);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
