@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Music - Nothing OS Inspired Music Player</title>
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="N-Music: A Nothing OS-inspired music player for Android. Privacy-focused, clean design, ad-free playback with YouTube Music integration.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #888888;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .version {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #FFFFFF;
+            color: #000000;
+        }
+        
+        .btn-primary:hover {
+            background: #F0F0F0;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .downloads {
+            padding: 60px 20px;
+        }
+        
+        .downloads h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .download-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .download-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .download-card p {
+            font-size: 14px;
+            color: #888888;
+            margin-bottom: 20px;
+        }
+        
+        .download-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .features {
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature {
+            padding: 24px;
+        }
+        
+        .feature h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+        
+        .feature p {
+            font-size: 14px;
+            color: #888888;
+            line-height: 1.8;
+        }
+        
+        .feature-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666666;
+            font-size: 14px;
+        }
+        
+        .links {
+            margin-bottom: 20px;
+        }
+        
+        .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 16px;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover {
+            color: #888888;
+        }
+        
+        .nothing-inspired {
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .nothing-inspired h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .nothing-story {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .nothing-story p {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 16px;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">♪</div>
+            <h1>N-Music</h1>
+            <p class="tagline">Nothing OS inspired music player for Android</p>
+            <div class="version">Version 13.2.0</div>
+            <div class="cta-buttons">
+                <a href="#downloads" class="btn btn-primary">Download Now</a>
+                <a href="https://github.com/koiverse/ArchiveTune" class="btn btn-secondary">View on GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="nothing-inspired">
+        <div class="container">
+            <h2>Nothing OS Inspired</h2>
+            <div class="nothing-story">
+                <p>🎵 N-Music is built with the Nothing OS design philosophy in mind—minimalist, bold, and unapologetically different.</p>
+                <p>We embrace the elegant dot-matrix aesthetic, glassmorphic components, and clean typography that define Nothing's vision. Every element serves a purpose.</p>
+                <p>Privacy-focused. Ad-free. Beautiful. This is music the way it should be.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="downloads" id="downloads">
+        <div class="container">
+            <h2>Get N-Music</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3>📱 GitHub Releases</h3>
+                    <p>Download the latest stable build directly from GitHub</p>
+                    <a href="https://github.com/koiverse/ArchiveTune/releases/latest" class="btn btn-primary">Download</a>
+                </div>
+                <div class="download-card">
+                    <h3>⚙️ Obtainium</h3>
+                    <p>Get automatic updates with app manager</p>
+                    <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/koiverse/ArchiveTune/" class="btn btn-primary">Add App</a>
+                </div>
+                <div class="download-card">
+                    <h3>🧩 IzzyOnDroid</h3>
+                    <p>F-Droid compatible repository</p>
+                    <a href="https://apt.izzysoft.de/fdroid/index/apk/moe.koiverse.archivetune" class="btn btn-primary">Browse</a>
+                </div>
+                <div class="download-card">
+                    <h3>🌙 Nightly Builds</h3>
+                    <p>Pre-release builds with latest features</p>
+                    <a href="https://nightly.link/koiverse/ArchiveTune/workflows/build/dev/app-universal-release" class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why N-Music?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Ad-Free Playback</h3>
+                    <p>Enjoy uninterrupted music with background listening support. Your listening, your way.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>No tracking, no invasive permissions. Your music history stays yours alone.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Nothing OS inspired aesthetic with glassmorphic components and dot-matrix typography.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎚️</div>
+                    <h3>Full Control</h3>
+                    <p>Equalizer, crossfade, playback speed, and deep customization for power users.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <h3>Live Lyrics</h3>
+                    <p>Synced lyrics with translation and romanization support for global artists.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Dynamic Colors</h3>
+                    <p>Album art-powered color themes and Material 3 design with full customization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Integrations</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎵</div>
+                    <h3>YouTube Music</h3>
+                    <p>Full integration with your YouTube Music library, playlists, and recommendations.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Last.fm Scrobbling</h3>
+                    <p>Track your listening history and get personalized recommendations.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <h3>ListenBrainz</h3>
+                    <p>Open-source music metadata database integration for better recognition.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Discord Rich Presence</h3>
+                    <p>Show your friends what you're listening to in real-time on Discord.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Music Recognition</h3>
+                    <p>Recognize songs playing around you with integrated music identification.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Local Files</h3>
+                    <p>Play music from your device storage alongside YouTube Music content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="links">
+                <a href="https://github.com/koiverse/ArchiveTune">GitHub</a>
+                <a href="https://github.com/koiverse/ArchiveTune/blob/main/PRIVACY.md">Privacy</a>
+                <a href="https://github.com/koiverse/ArchiveTune/blob/main/LICENSE">License</a>
+                <a href="https://instagram.com/ali.mohsen.maruf">Support</a>
+            </div>
+            <p>N-Music is an independent third-party client, not affiliated with Google LLC or YouTube.<br>
+            Built with ❤️ using Kotlin and Jetpack Compose | Material Design 3 + Nothing OS Inspiration</p>
+        </div>
+    </footer>
+</body>
+</html>

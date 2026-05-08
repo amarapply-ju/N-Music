@@ -1,0 +1,6 @@
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+- jekyll-remote-theme
+title: N-Music
+description: Nothing OS inspired music player for Android
+show_downloads: false

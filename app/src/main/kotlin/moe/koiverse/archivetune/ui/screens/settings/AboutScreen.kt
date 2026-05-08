@@ -85,16 +85,16 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                 )
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = NothingOSDesignSystem.Spacing.Lg),
-            verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Xl),
+            verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Lg),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // === Header: N-music Logo ===
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = NothingOSDesignSystem.Spacing.Lg),
+                    .padding(vertical = NothingOSDesignSystem.Spacing.Md),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Sm),
+                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Xs),
             ) {
                 Text(
                     "N-music",
@@ -138,6 +138,70 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                     fontWeight = FontWeight.Normal,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                     letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
+                )
+            }
+
+            // === Nothing OS Inspiration ===
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = MaterialTheme.colorScheme.tertiaryContainer,
+                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
+                    )
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
+                    )
+                    .padding(NothingOSDesignSystem.Spacing.Xl),
+                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Md),
+            ) {
+                Text(
+                    "Nothing OS Inspired",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
+                )
+                Text(
+                    "This app draws heavy inspiration from Nothing OS's elegant design philosophy. We embrace the bold monochrome aesthetic, dot-matrix typography, and glassmorphic components that define Nothing's vision.",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.85f),
+                    letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
+                    lineHeight = 18.sp,
+                )
+            }
+
+            // === Design Philosophy ===
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
+                    )
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
+                    )
+                    .padding(NothingOSDesignSystem.Spacing.Xl),
+                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Md),
+            ) {
+                Text(
+                    "Our Design Story",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+                Text(
+                    "We believe in simplicity and clarity. N-music is built with the Nothing OS design language in mind—minimalist, bold, and unapologetically different. Every element serves a purpose, just like Nothing's dot-matrix design.",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.85f),
+                    letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
+                    lineHeight = 18.sp,
                 )
             }
 
