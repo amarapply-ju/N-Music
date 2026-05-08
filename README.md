@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://github.com/koiverse/ArchiveTune/raw/main/fastlane/metadata/android/en-US/images/icon.png" width="120" height="120" alt="N-Music Logo" style="border-radius: 22%">
+  <img src="https://github.com/alimohsenmaruf/N-Music/raw/main/fastlane/metadata/android/en-US/images/icon.png" width="120" height="120" alt="N-Music Logo" style="border-radius: 22%">
 
   <h1>N-Music</h1>
 
@@ -11,8 +11,8 @@
   </p>
 
   <p align="center">
-    <a href="https://github.com/koiverse/ArchiveTune/releases/latest"><b>Download Releases</b></a> •
-    <a href="https://github.com/koiverse/ArchiveTune"><b>GitHub</b></a> •
+    <a href="https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest"><b>Download Releases</b></a> •
+    <a href="https://github.com/alimohsenmaruf/N-Music"><b>GitHub</b></a> •
     <a href="#features"><b>Features</b></a> •
     <a href="PRIVACY.md"><b>Privacy Policy</b></a> •
     <a href="CONTRIBUTING.md"><b>Contributing</b></a>
@@ -20,7 +20,7 @@
 
   <br />
 
-  <img src="https://img.shields.io/github/v/release/koiverse/ArchiveTune?style=flat-square&color=000000&labelColor=ffffff" alt="Latest Release" />
+  <img src="https://img.shields.io/github/v/release/alimohsenmaruf/N-Music?style=flat-square&color=000000&labelColor=ffffff" alt="Latest Release" />
   <img src="https://img.shields.io/badge/Architecture-MVVM-000000?style=flat-square&labelColor=ffffff" alt="MVVM" />
   <img src="https://img.shields.io/badge/Language-Kotlin-000000?style=flat-square&labelColor=ffffff" alt="Kotlin" />
   <img src="https://img.shields.io/badge/License-GPL--3.0-000000?style=flat-square&labelColor=ffffff" alt="GPL-3.0" />
@@ -70,7 +70,7 @@ We believe in **simplicity**, **privacy**, and **beautiful design**. Every eleme
 
 **The only supported download source right now is GitHub Releases:**
 
-### 📦 **[Download the latest release →](https://github.com/koiverse/ArchiveTune/releases/latest)**
+### 📦 **[Download the latest release →](https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest)**
 
 ---
 

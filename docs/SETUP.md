@@ -29,7 +29,7 @@ Suggested description:
 ## Download source
 
 There is only one supported download source right now:
-- **GitHub Releases**: `https://github.com/koiverse/ArchiveTune/releases/latest`
+- **GitHub Releases**: `https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest`
 
 ## Notes
 

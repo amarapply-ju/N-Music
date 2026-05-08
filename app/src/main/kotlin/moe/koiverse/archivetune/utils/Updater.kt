@@ -50,7 +50,7 @@ private data class ReleasesNetworkResult(
 
 object Updater {
     private val client = HttpClient()
-    private const val GitHubRepoPath = "koiverse/ArchiveTune"
+    private const val GitHubRepoPath = "alimohsenmaruf/N-Music"
     private val GitHubApiBaseUrl = "https://api.github.com/repos/$GitHubRepoPath"
     private val GitHubReleaseDownloadBaseUrl = "https://github.com/$GitHubRepoPath/releases/latest/download/"
     private const val ReleaseCacheCheckIntervalMs: Long = 6 * 60 * 60 * 1000L
