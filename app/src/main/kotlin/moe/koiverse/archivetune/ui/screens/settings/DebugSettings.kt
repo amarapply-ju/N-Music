@@ -209,6 +209,7 @@ fun DebugSettings(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Spacer(modifier = Modifier.height(8.dp))
+                    DevDebugPanel()
                 }
             }
 
@@ -232,125 +233,7 @@ fun DebugSettings(
 }
 
 @Composable
-
-
-    val lastStart: String = lastStartTs?.let { makeTimeString(it) } ?: "—"
-    val lastEnd: String = lastEndTs?.let { makeTimeString(it) } ?: "—"
-
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Surface(
-                        shape = CircleShape,
-                        color = if (isRunning)
-                            MaterialTheme.colorScheme.primaryContainer
-                        else
-                            MaterialTheme.colorScheme.errorContainer,
-                        modifier = Modifier.size(48.dp)
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Icon(
-                                painter = painterResource(R.drawable.discord),
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp),
-                                tint = if (isRunning)
-                                    MaterialTheme.colorScheme.onPrimaryContainer
-                                else
-                                    MaterialTheme.colorScheme.onErrorContainer
-                            )
-                        }
-                    }
-                    Column {
-                        Text(
-                            text = stringResource(R.string.discord_integration),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = if (isRunning)
-                                stringResource(R.string.presence_manager_running)
-                            else
-                                stringResource(R.string.presence_manager_stopped),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = if (isRunning)
-                                MaterialTheme.colorScheme.primary
-                            else
-                                MaterialTheme.colorScheme.error
-                        )
-                    }
-                }
-
-                Surface(
-                    shape = RoundedCornerShape(12.dp),
-                    color = if (isRunning)
-                        Color(0xFF43B581).copy(alpha = 0.2f)
-                    else
-                        MaterialTheme.colorScheme.error.copy(alpha = 0.2f)
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(8.dp)
-                                .background(
-                                    color = if (isRunning) Color(0xFF43B581) else MaterialTheme.colorScheme.error,
-                                    shape = CircleShape
-                                )
-                        )
-                        Text(
-                            text = if (isRunning) stringResource(R.string.status_active) else stringResource(R.string.status_inactive),
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = if (isRunning) Color(0xFF43B581) else MaterialTheme.colorScheme.error
-                        )
-                    }
-                }
-            }
-
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                DebugTimestampItem(
-                    label = stringResource(R.string.last_start),
-                    value = lastStart,
-                    icon = R.drawable.play
-                )
-                DebugTimestampItem(
-                    label = stringResource(R.string.last_end),
-                    value = lastEnd,
-                    icon = R.drawable.pause
-                )
-            }
-        }
-    }
-
+private fun DevDebugPanel() {
     LogViewerPanel()
 }
 
