@@ -41,7 +41,7 @@ N-Music follows a strict **Clean Architecture** approach. This separation of con
 
 1. **Clone the Source:**
 ```bash
-git clone https://github.com/amarapply-ju/N-Music.git
+git clone https://github.com/alimohsenmaruf/N-Music.git
 cd N-Music
 
 ```

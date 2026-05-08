@@ -10,7 +10,7 @@ body:
         Before submitting, please ensure you have completed the following steps. 
         Incomplete reports or reports for versions other than the latest debug build may be closed.
       options:
-        - label: I have tested this bug on the [latest debug version](https://github.com/amarapply-ju/N-Music/actions).
+        - label: I have tested this bug on the [latest debug version](https://github.com/alimohsenmaruf/N-Music/actions).
           required: true
         - label: I have searched existing issues (open and closed) to avoid duplicates.
           required: true

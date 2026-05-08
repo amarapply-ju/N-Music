@@ -113,8 +113,8 @@ This file should be reviewed whenever N-Music changes its permissions, storage m
 
 For questions or corrections, use the project repository and issue tracker.
 
-- Repository: [https://github.com/amarapply-ju/N-Music](https://github.com/amarapply-ju/N-Music)
-- Issues: [https://github.com/amarapply-ju/N-Music/issues](https://github.com/amarapply-ju/N-Music/issues)
+- Repository: [https://github.com/alimohsenmaruf/N-Music](https://github.com/alimohsenmaruf/N-Music)
+- Issues: [https://github.com/alimohsenmaruf/N-Music/issues](https://github.com/alimohsenmaruf/N-Music/issues)
 
 ## Technical Appendix
 

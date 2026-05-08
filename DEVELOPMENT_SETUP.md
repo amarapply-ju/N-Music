@@ -178,7 +178,7 @@ chmod +x /home/jeopardous4/Downloads/ArchiveTune-1.0/gradlew
 
 ### Resources
 - [Official Website](https://archivetune.koiiverse.cloud)
-- [GitHub Repository](https://github.com/amarapply-ju/N-Music)
+- [GitHub Repository](https://github.com/alimohsenmaruf/N-Music)
 - [Instagram](https://instagram.com/ali.mohsen.maruf)
 - [Android Gradle Plugin Documentation](https://developer.android.com/build)
 - [Kotlin Documentation](https://kotlinlang.org/docs/)

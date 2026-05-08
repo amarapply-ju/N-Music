@@ -68,6 +68,20 @@
     html.dark-theme header.nav {
       background: #000;
     }
+
+    /* Dark theme navbar links hover */
+    html.dark-theme .nav-links a:hover {
+      color: var(--red);
+    }
+
+    /* Dark theme feature cards */
+    html.dark-theme .feature {
+      background: #000;
+    }
+
+    html.dark-theme .feature:hover {
+      background: #111;
+    }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--fg);font-family:var(--mono);-webkit-font-smoothing:antialiased;}
   html{scroll-behavior:smooth}
@@ -140,7 +154,7 @@
 
   .nav-links a{position:relative;padding:6px 0}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--red);transition:width .25s ease}
-  .nav-links a:hover{color:#fff}
+  .nav-links a:hover{color:var(--red)}
   
   @media (prefers-color-scheme: light) {
     .nav-links a:hover {
@@ -218,7 +232,7 @@
 
   /* ---------- Features ---------- */
   .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .feature{background:#050505;padding:36px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;transition:background .3s}
+  .feature{background:#000;padding:36px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;transition:background .3s}
   
   @media (prefers-color-scheme: light) {
     .feature {
@@ -227,10 +241,10 @@
     .feature:hover{background:#f5f5f5}
   }
 
-  .feature:hover{background:#0c0c0c}
+  .feature:hover{background:#111}
   .feature .num{font-family:var(--dot);font-size:14px;color:var(--red);letter-spacing:.2em}
   .feature h3{margin:24px 0 12px}
-  .feature p{font-size:13px;color:#aaa}
+  .feature p{font-size:13px;color:#d0d0d0}
   
   @media (prefers-color-scheme: light) {
     .feature p {
@@ -426,7 +440,7 @@
         <a href="#screens">Screens</a>
         <a href="#source">Source</a>
         <a href="#faq">FAQ</a>
-        <a href="#download">Download</a>
+        <a href="https://github.com/alimohsenmaruf/N-Music/releases/latest">Download App</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="icon">◐</span></button>
     </div>

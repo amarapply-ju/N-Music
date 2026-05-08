@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="160" height="160" alt="N-Music Logo" style="border-radius: 22%">
+  <img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="160" height="160" alt="N-Music Logo" style="border-radius: 22%">
 
   <h1>N-Music</h1>
 
@@ -11,7 +11,7 @@
   </p>
 
   <p align="center">
-    <a href="https://github.com/amarapply-ju/N-Music"><b>Project Repository</b></a> •
+    <a href="https://github.com/alimohsenmaruf/N-Music"><b>Project Repository</b></a> •
     <a href="#features"><b>Features</b></a> •
     <a href="PRIVACY.md"><b>Privacy</b></a> •
     <a href="#download-now"><b>Download</b></a> •
@@ -20,10 +20,10 @@
   </p>
 
   <div align="center">
-    <img src="https://img.shields.io/github/v/release/amarapply-ju/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Latest Version" />
-    <img src="https://img.shields.io/github/downloads/amarapply-ju/N-Music/total?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Downloads" />
-    <img src="https://img.shields.io/github/stars/amarapply-ju/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Stars" />
-    <img src="https://img.shields.io/github/license/amarapply-ju/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e" alt="License" />
+    <img src="https://img.shields.io/github/v/release/alimohsenmaruf/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Latest Version" />
+    <img src="https://img.shields.io/github/downloads/alimohsenmaruf/N-Music/total?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Downloads" />
+    <img src="https://img.shields.io/github/stars/alimohsenmaruf/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e&logo=github" alt="Stars" />
+    <img src="https://img.shields.io/github/license/alimohsenmaruf/N-Music?style=for-the-badge&color=6366f1&labelColor=1e1e2e" alt="License" />
     <img src="https://img.shields.io/badge/Architecture-MVVM-6366f1?style=for-the-badge&labelColor=1e1e2e&logo=kotlin" alt="MVVM Architecture" />
     <img src="https://img.shields.io/badge/Language-Kotlin-7f52ff?style=for-the-badge&logo=kotlin&color=6366f1&labelColor=1e1e2e" alt="Kotlin Language" />
     <img src="https://img.shields.io/badge/Toolkit-Jetpack_Compose-4285f4?style=for-the-badge&logo=jetpack-compose&color=6366f1&labelColor=1e1e2e" alt="Jetpack Compose Toolkit" />
@@ -53,14 +53,14 @@
 
 <div align="center">
 
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_1.jpg" alt="Browse" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_2.jpg" alt="Live Lyrics" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_3.jpg" alt="Theme Customization" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_4.jpg" alt="Live Statistics" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_5.jpg" alt="Artist" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_6.jpg" alt="Album" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_7.jpg" alt="Player" width="30%" />
-<img src="https://github.com/amarapply-ju/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_8.jpg" alt="Settings" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_1.jpg" alt="Browse" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_2.jpg" alt="Live Lyrics" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_3.jpg" alt="Theme Customization" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_4.jpg" alt="Live Statistics" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_5.jpg" alt="Artist" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_6.jpg" alt="Album" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_7.jpg" alt="Player" width="30%" />
+<img src="https://github.com/alimohsenmaruf/N-Music/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot_8.jpg" alt="Settings" width="30%" />
 
 </div>
 
@@ -166,13 +166,13 @@
   <tbody>
     <tr>
       <td align="center">
-        <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/amarapply-ju/N-Music/">
+        <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/alimohsenmaruf/N-Music/">
           <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png" height="50" alt="Get N-Music on Obtainium">
         </a>
       </td>
       <td align="center">
         <a href="https://apt.izzysoft.de/fdroid/index/apk/moe.koiverse.archivetune">
-          <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/757d5932832e1da27ced56de98c5ad1275cf0db1/assets/IzzyOnDroidButtonBorder.svg" height="50" alt="Get N-Music on IzzyOnDroid">
+          <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/757d5932832e1da27ced56de98c5ad1275cf0db1/assets/IzzyOnDroidButtonBorder.svg" height="50" alt="Get N-Music on IzzyOnDroid">
         </a>
       </td>
     </tr>
@@ -181,8 +181,8 @@
     </tr>
     <tr>
       <td align="center" colspan="2">
-        <a href="https://github.com/amarapply-ju/N-Music/releases/latest">
-          <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/refs/heads/main/assets/badge_github.png" height="50" alt="Get N-Music on GitHub">
+        <a href="https://github.com/alimohsenmaruf/N-Music/releases/latest">
+          <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/main/assets/badge_github.png" height="50" alt="Get N-Music on GitHub">
         </a>
       </td>
     </tr>
@@ -198,7 +198,7 @@
       </td>
       <td align="center">
         <a href="https://unclouded.app/apps/archivetune/">
-          <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/refs/heads/dev/assets/badge_unclouded.png" height="50" alt="Get N-Music on Unclouded">
+          <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/dev/assets/badge_unclouded.png" height="50" alt="Get N-Music on Unclouded">
         </a>
       </td>
     </tr>
@@ -216,8 +216,8 @@
   <tbody>
     <tr>
       <td align="center">
-        <a href="https://nightly.link/amarapply-ju/N-Music/workflows/build/dev/app-universal-release">
-          <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/refs/heads/main/assets/badge_github.png" height="50" alt="Download the latest N-Music nightly build">
+        <a href="https://nightly.link/alimohsenmaruf/N-Music/workflows/build/dev/app-universal-release">
+          <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/main/assets/badge_github.png" height="50" alt="Download the latest N-Music nightly build">
         </a>
       </td>
     </tr>
@@ -248,8 +248,8 @@ N-Music belongs to everyone. Help us localize the experience for your region.
 </div>
 
 ### ✨ Project Contributors
-<a href="https://github.com/amarapply-ju/N-Music/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=amarapply-ju/N-Music" />
+<a href="https://github.com/alimohsenmaruf/N-Music/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=alimohsenmaruf/N-Music" />
 </a>
 
 ### 🛠️ Development & Engineering
@@ -262,7 +262,7 @@ Interested in building the project or contributing? N-Music is built on a high-p
 N-Music is free and open-source. If it brings you joy, consider supporting its development!
 ##### Tribe
 <a href="https://sociabuzz.com/chrtrxwstia">
-  <img src="https://github.com/amarapply-ju/N-Music/blob/dev/assets/tribe.png?raw=true" alt="Buy Me a Coffee" width="160" />
+  <img src="https://github.com/alimohsenmaruf/N-Music/blob/dev/assets/tribe.png?raw=true" alt="Buy Me a Coffee" width="160" />
 </a>
 
 ---
@@ -290,8 +290,8 @@ N-Music is an independent third-party client.
 ---
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/refs/heads/dev/fastlane/metadata/android/en-US/images/ArchiveTuneFull.png" alt="N-Music Banner" style="width: 100%; max-width: 500px;">
+  <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/dev/fastlane/metadata/android/en-US/images/ArchiveTuneFull.png" alt="N-Music Banner" style="width: 100%; max-width: 500px;">
   <p><b>If N-Music elevated your music experience, please consider giving us a ⭐</b></p>
   <br />
-  <img src="https://raw.githubusercontent.com/amarapply-ju/N-Music/refs/heads/dev/assets/badge_part.png" alt="N-Music Banner" style="width: 160px">
+  <img src="https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/dev/assets/badge_part.png" alt="N-Music Banner" style="width: 160px">
 </div>
