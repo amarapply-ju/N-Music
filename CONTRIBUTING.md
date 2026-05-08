@@ -48,7 +48,6 @@ cd N-Music
 
 
 2. **Secret Management:**
-N-Music uses a modular properties system. If your build requires specific API keys (e.g., Discord Client IDs), define them in your `local.properties`:
 ```properties
 # Path to your Android SDK
 sdk.dir=/Users/yourname/Library/Android/sdk

@@ -89,7 +89,7 @@ All screens now support full light/dark theme switching:
    - Version matches (1.0+)
 
 4. **Share Landing Page**:
-   - Point users to: `https://github.com/koiverse/ArchiveTune` first
+   - Point users to: `https://github.com/alimohsenmaruf/N-Music` first
    - Landing page handles downloads
 
 ## 6. Build Status

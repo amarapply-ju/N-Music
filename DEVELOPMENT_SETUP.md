@@ -113,7 +113,6 @@ ArchiveTune-1.0/
 ├── betterlyrics/            # Better Lyrics feature module
 ├── canvas/                  # Canvas rendering module
 ├── innertube/               # YouTube InnerTube API client
-├── kizzy/                   # Kizzy rich presence module
 ├── kugou/                   # Kugou lyrics module
 ├── lastfm/                  # Last.fm integration
 ├── lrclib/                  # LRClib lyrics module

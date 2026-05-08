@@ -241,7 +241,6 @@ import moe.koiverse.archivetune.ui.screens.navigationBuilder
 import moe.koiverse.archivetune.ui.screens.search.LocalSearchScreen
 import moe.koiverse.archivetune.ui.screens.search.OnlineSearchScreen
 import moe.koiverse.archivetune.ui.screens.settings.DarkMode
-import moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager
 import moe.koiverse.archivetune.ui.screens.settings.NavigationTab
 import moe.koiverse.archivetune.ui.theme.ArchiveTuneTheme
 import moe.koiverse.archivetune.ui.theme.ColorSaver
@@ -365,10 +364,10 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Only clear/stop presence when the activity is actually finishing (not on rotation)
+        // Only clear/stop when the activity is actually finishing (not on rotation)
         // and do not clear it for transient configuration changes.
         if (isFinishing && !isChangingConfigurations) {
-            try { DiscordPresenceManager.stop() } catch (_: Exception) {}
+            // Cleanup code
         }
 
         val shouldStopOnTaskClear =
@@ -479,6 +478,7 @@ class MainActivity : ComponentActivity() {
                     val menuState = remember { moe.koiverse.archivetune.ui.component.MenuState() }
                     val uriHandler = LocalUriHandler.current
                     val releaseNotesState = remember { mutableStateOf<String?>(null) }
+                    val releaseUrlState = remember { mutableStateOf("https://github.com/alimohsenmaruf/N-Music/releases/latest") }
                     val updateSheetContent: @Composable ColumnScope.() -> Unit = { // receiver: ColumnScope
                         Text(
                             text = stringResource(R.string.new_update_available),
@@ -526,7 +526,7 @@ class MainActivity : ComponentActivity() {
                         androidx.compose.material3.Button(
                             onClick = {
                                 try {
-                                    uriHandler.openUri(Updater.getLatestDownloadUrl())
+                                    uriHandler.openUri(releaseUrlState.value)
                                 } catch (_: Exception) {}
                             },
                             modifier = Modifier.fillMaxWidth(),
@@ -539,6 +539,9 @@ class MainActivity : ComponentActivity() {
                     // fetch release notes and show sheet when a new version is detected
                     LaunchedEffect(latestVersionName) {
                         if (!Updater.isSameVersion(latestVersionName, BuildConfig.VERSION_NAME)) {
+                            Updater.getLatestReleaseInfo().onSuccess {
+                                releaseUrlState.value = it.htmlUrl.ifBlank { releaseUrlState.value }
+                            }
                             Updater.getLatestReleaseNotes().onSuccess {
                                 releaseNotesState.value = it
                             }.onFailure {

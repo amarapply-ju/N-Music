@@ -179,14 +179,8 @@ fun SwipeableMiniPlayerBox(
 
                                     if (isRightSwipe && canSkipPrevious) {
                                         playerConnection.player.seekToPreviousMediaItem()
-                                        if (moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.isRunning()) {
-                                            try { moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.restart() } catch (_: Exception) {}
-                                        }
                                     } else if (!isRightSwipe && canSkipNext) {
                                         playerConnection.player.seekToNext()
-                                        if (moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.isRunning()) {
-                                            try { moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.restart() } catch (_: Exception) {}
-                                        }
                                     }
                                 }
 

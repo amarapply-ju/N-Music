@@ -209,7 +209,6 @@ fun DebugSettings(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Spacer(modifier = Modifier.height(8.dp))
-                    DiscordDebugSection()
                 }
             }
 
@@ -233,12 +232,11 @@ fun DebugSettings(
 }
 
 @Composable
-private fun DiscordDebugSection() {
-    val lastStartTs: Long? by DiscordPresenceManager.lastRpcStartTimeFlow.collectAsState(initial = null)
-    val lastEndTs: Long? by DiscordPresenceManager.lastRpcEndTimeFlow.collectAsState(initial = null)
+
+
     val lastStart: String = lastStartTs?.let { makeTimeString(it) } ?: "—"
     val lastEnd: String = lastEndTs?.let { makeTimeString(it) } ?: "—"
-    val isRunning = DiscordPresenceManager.isRunning()
+
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -411,10 +409,9 @@ private fun LogViewerPanel() {
     val filtered = remember(allLogs, filterMode, selectedLevels) {
         allLogs.filter { entry ->
             val tagMatch = when (filterMode) {
-                0 -> (entry.tag?.contains("DiscordRPC", true) == true) ||
-                        (entry.tag?.contains("DiscordPresenceManager", true) == true) ||
-                        entry.message.contains("DiscordPresenceManager") ||
-                        entry.message.contains("DiscordRPC")
+
+                        // Discord logging removed
+
                 else -> true
             }
             val levelMatch = selectedLevels.contains(entry.level)

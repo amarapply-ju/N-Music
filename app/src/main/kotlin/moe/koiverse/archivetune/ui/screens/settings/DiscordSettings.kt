@@ -975,7 +975,7 @@ fun RichPresence(
    val (button1CustomUrl) = rememberPreference(DiscordActivityButton1CustomUrlKey, "")
 
    val (button2UrlSource) = rememberPreference(DiscordActivityButton2UrlSourceKey, "custom")
-   val (button2CustomUrl) = rememberPreference(DiscordActivityButton2CustomUrlKey, "https://github.com/koiverse/ArchiveTune")
+   val (button2CustomUrl) = rememberPreference(DiscordActivityButton2CustomUrlKey, "https://github.com/alimohsenmaruf/N-Music")
 
 // Large text source + custom
    val (largeTextSource) = rememberPreference(DiscordLargeTextSourceKey, "album")
@@ -1046,7 +1046,7 @@ fun RichPresence(
                                 model = when (largeImageType) {
                                     "thumbnail" -> song?.song?.thumbnailUrl
                                     "artist" -> song?.artists?.firstOrNull()?.thumbnailUrl
-                                    "appicon" -> "https://raw.githubusercontent.com/koiverse/ArchiveTune/main/fastlane/metadata/android/en-US/images/icon.png"
+                                    "appicon" -> "https://raw.githubusercontent.com/alimohsenmaruf/N-Music/dev/fastlane/metadata/android/en-US/images/icon.png"
                                     "custom" -> largeImageCustomUrl.ifBlank { song?.song?.thumbnailUrl }
                                     else -> song?.song?.thumbnailUrl
                                 },
@@ -1070,7 +1070,7 @@ fun RichPresence(
                             val smallModel = when (smallImageType.lowercase()) {
                                 "thumbnail" -> songThumb  // Only show song thumbnail, no fallback
                                 "artist" -> artistThumb   // Only show artist thumbnail, no fallback to song
-                                "appicon" -> "https://raw.githubusercontent.com/koiverse/ArchiveTune/main/fastlane/metadata/android/en-US/images/icon.png"
+                                "appicon" -> "https://raw.githubusercontent.com/alimohsenmaruf/N-Music/dev/fastlane/metadata/android/en-US/images/icon.png"
                                 "custom" -> smallImageCustomUrl.takeIf { it.isNotBlank() } ?: songThumb  // Custom with fallback to song only
                                 "dontshow", "none" -> null
                                 else -> artistThumb  // Default to artist without fallback

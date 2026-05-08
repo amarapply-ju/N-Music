@@ -6,7 +6,7 @@ Last updated: 2026-04-20
 
 This notice covers the Android N-Music app in this repository. It explains what the app stores on your device, what it can send to external services when you use specific features, and what Android permissions it requests.
 
-This notice is based on the current source code and build configuration. It does not replace the privacy terms of YouTube or YouTube Music, Last.fm, ListenBrainz, Discord, GitHub, lyrics providers, the N-Music canvas service, or any Together server you choose to use.
+This notice is based on the current source code and build configuration. It does not replace the privacy terms of YouTube or YouTube Music, Last.fm, ListenBrainz, GitHub, lyrics providers, the N-Music canvas service, or any Together server you choose to use.
 
 ## Privacy Summary
 
@@ -31,7 +31,7 @@ The app stores data locally to provide playback, library, search, lyrics, sync, 
 | Listening history data | Playback event records with song ID, timestamp, and play time | Listening stats and history-related features |
 | App settings | Language, country, UI settings, audio settings, proxy settings, cache settings, history pause toggles, Together settings | Personalization and feature configuration |
 | Optional account and session data | YouTube account name, email, channel handle, visitor data, data sync ID, cookie, PO token values | Signed-in YouTube and YouTube Music functionality |
-| Optional third-party integration data | Last.fm session and username, ListenBrainz token, Discord token and related profile fields, Together display name, Together client ID, last join link | External integrations you choose to enable |
+| Optional third-party integration data | Last.fm session and username, ListenBrainz token, Together display name, Together client ID, last join link | External integrations you choose to enable |
 | Cached files | Streaming cache, download cache, and other app-managed files | Faster playback, offline use, and feature performance |
 
 ## Data the App May Send Off Your Device
@@ -45,7 +45,6 @@ N-Music does not silently forward your data to unrelated services. It only conta
 | N-Music canvas service | Song and artist names, album ID, or album URL, plus a bearer token if configured in the app build | When canvas or artwork lookup features are used |
 | Last.fm | Now playing and scrobble metadata, plus your Last.fm session information | When Last.fm scrobbling is enabled |
 | ListenBrainz | Playback history or scrobble metadata and your ListenBrainz token | When ListenBrainz sync is enabled |
-| Discord Rich Presence | Current track, artist, album, images, and configured URLs or labels for presence cards | When Discord Rich Presence is enabled |
 | GitHub releases | Update-check requests and cached release metadata used to show new versions | When the app checks for updates |
 | Together | Display name, client ID, session code or keys, playback state, queue metadata, and room actions | When you host or join a Together session |
 
@@ -89,7 +88,7 @@ You can control a significant amount of privacy-related behavior from the app an
 
 - You can use many core features without enabling optional third-party integrations.
 - You can choose whether to sign in to YouTube or YouTube Music.
-- You can enable or disable Last.fm scrobbling, ListenBrainz sync, Discord Rich Presence, lyrics providers, and Together features.
+- You can enable or disable Last.fm scrobbling, ListenBrainz sync, lyrics providers, and Together features.
 - You can grant or deny Android runtime permissions such as media access, notifications, and microphone access.
 - You can configure or disable proxy-related settings.
 - The codebase includes settings to pause search history and listening history.
@@ -124,12 +123,12 @@ This appendix maps the main statements above to concrete implementation surfaces
 | --- | --- | --- |
 | Permissions and backup behavior | The manifest declares network, media, microphone, Bluetooth, notification, boot, wake-lock, and foreground-service permissions. It also enables backup, cleartext traffic, and audio playback capture. Separate XML files exclude selected caches and internal playback database files from Android backup and device transfer. | `app/src/main/AndroidManifest.xml`, `app/src/main/res/xml/data_extraction_rules.xml`, `app/src/main/res/xml/backup_rules.xml` |
 | Local database contents | The Room schema includes songs, artists, albums, playlists, search history, lyrics, audio format metadata, and playback event records. | `app/schemas/moe.koiverse.archivetune.db.InternalDatabase/9.json` |
-| Settings and tokens stored locally | DataStore preference keys include UI settings, proxy settings, history toggles, Together values, YouTube session values, account name or email fields, Last.fm session values, ListenBrainz token values, Discord values, and update-cache keys. | `app/src/main/kotlin/moe/koiverse/archivetune/constants/PreferenceKeys.kt` |
+| Settings and tokens stored locally | DataStore preference keys include UI settings, proxy settings, history toggles, Together values, YouTube session values, account name or email fields, Last.fm session values, and ListenBrainz token values. | `app/src/main/kotlin/moe/koiverse/archivetune/constants/PreferenceKeys.kt` |
 | YouTube signed-in state | The Innertube layer exposes visitor data, data sync ID, cookie, PO token values, proxy state, and login-for-browse behavior as part of the current playback auth state. | `innertube/src/main/kotlin/moe/koiverse/archivetune/innertube/YouTube.kt` |
 | Manual backup export | The backup view model writes app settings plus database files into a ZIP archive chosen by the user. | `app/src/main/kotlin/moe/koiverse/archivetune/viewmodels/BackupRestoreViewModel.kt` |
 | External network integrations | Build configuration defines keys for Last.fm, Together, and canvas services. The updater fetches release information and caches related metadata in app preferences. | `app/build.gradle.kts`, `app/src/main/kotlin/moe/koiverse/archivetune/utils/Updater.kt` |
 | Canvas service requests | The canvas module sends song and artist names, album IDs, or album URLs to `https://artwork-archivetune.koiiverse.cloud/` and can attach a bearer token. | `canvas/src/main/kotlin/moe/koiverse/archivetune/canvas/ArchiveTuneCanvas.kt` |
-| Public feature claims | The repository README and store metadata describe privacy, YouTube integration, lyrics, music recognition, Last.fm, ListenBrainz, Discord Rich Presence, and other network-backed features that must stay aligned with this notice. | `README.md`, `fastlane/metadata/android/en-US/full_description.txt` |
+| Public feature claims | The repository README and store metadata describe privacy, YouTube integration, lyrics, music recognition, Last.fm, ListenBrainz, and other network-backed features that must stay aligned with this notice. | `README.md`, `fastlane/metadata/android/en-US/full_description.txt` |
 | Current dependency posture | The current Android dependency declarations show Compose, Room, Hilt, Ktor, Media3, Coil, Timber, and related libraries. They do not currently show Firebase, Crashlytics, Sentry, mobile ad SDKs, or mobile analytics SDKs in the Android app dependency definitions reviewed for this notice. | `app/build.gradle.kts`, `gradle/libs.versions.toml` |
 
 ## Open Documentation Boundaries

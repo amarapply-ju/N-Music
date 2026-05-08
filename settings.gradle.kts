@@ -38,7 +38,6 @@ include(":lrclib")
 include(":lastfm")
 include("simpmusic")
 include(":betterlyrics")
-include(":kizzy")
 include(":canvas")
 include(":shazamkit")
 

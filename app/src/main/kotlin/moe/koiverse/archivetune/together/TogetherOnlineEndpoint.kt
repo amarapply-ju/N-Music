@@ -23,7 +23,7 @@ import moe.koiverse.archivetune.utils.getAsync
 
 object TogetherOnlineEndpoint {
     private const val EndpointSourceUrl =
-        "https://raw.githubusercontent.com/koiverse/ArchiveTune/refs/heads/dev/ArchiveTuneKoiverseServer.txt"
+        "https://raw.githubusercontent.com/alimohsenmaruf/N-Music/refs/heads/dev/ArchiveTuneKoiverseServer.txt"
 
     private const val CacheTtlMs: Long = 6 * 60 * 60 * 1000L
 

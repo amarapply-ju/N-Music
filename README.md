@@ -33,7 +33,6 @@ N-Music focuses on a clean UI, smooth playback, and a lightweight experience.
 - Playlist and library management
 - Lyrics support
 - Last.fm and ListenBrainz integrations
-- Discord rich presence support
 - Lightweight APK
 
 ## Download
@@ -70,7 +69,7 @@ Release build (with signing configured):
 - lastfm: Last.fm integration
 - lrclib: lyrics support
 - betterlyrics: lyrics provider support
-- simpmusic, kizzy, kugou, shazamkit: integration modules
+- simpmusic, kugou, shazamkit: integration modules
 
 ## Support
 

@@ -406,14 +406,8 @@ fun Thumbnail(
 
         if (currentItem > currentMediaIndex && canSkipNext) {
             playerConnection.player.seekToNext()
-            if (moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.isRunning()) {
-                try { moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.restart() } catch (_: Exception) {}
-            }
         } else if (currentItem < currentMediaIndex && canSkipPrevious) {
             playerConnection.player.seekToPreviousMediaItem()
-            if (moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.isRunning()) {
-                try { moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.restart() } catch (_: Exception) {}
-            }
         }
     }
 
@@ -640,10 +634,6 @@ fun Thumbnail(
                                                         (currentPosition + skipAmount).coerceAtMost(duration)
                                                     )
                                                     seekDirection = context.getString(R.string.seek_forward_dynamic, skipAmount / 1000)
-                                                }
-                                                // If a user double-tap skip lands on a new media item, restart presence manager to pick up artwork quickly
-                                                if (moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.isRunning()) {
-                                                    try { moe.koiverse.archivetune.ui.screens.settings.DiscordPresenceManager.restart() } catch (_: Exception) {}
                                                 }
 
                                                 showSeekEffect = true
