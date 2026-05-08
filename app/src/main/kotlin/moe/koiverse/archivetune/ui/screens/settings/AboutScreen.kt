@@ -21,13 +21,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.LargeFlexibleTopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -48,11 +49,17 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
     val uriHandler = LocalUriHandler.current
 
     Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
-            TopAppBar(
+            LargeFlexibleTopAppBar(
                 title = { Text(stringResource(R.string.about)) },
+                subtitle = {
+                    Text(text = "Nothing OS inspired")
+                },
                 navigationIcon = {
                     IconButton(
                         onClick = navController::navigateUp,
@@ -64,8 +71,9 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
+                colors = TopAppBarDefaults.largeTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
+                    scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
                 ),
                 windowInsets = LocalPlayerAwareWindowInsets.current.only(
                     WindowInsetsSides.Top + WindowInsetsSides.Horizontal,
@@ -85,14 +93,14 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                 )
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = NothingOSDesignSystem.Spacing.Lg),
-            verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Lg),
+            verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Md),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // === Header: N-music Logo ===
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = NothingOSDesignSystem.Spacing.Md),
+                    .padding(vertical = NothingOSDesignSystem.Spacing.Sm),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Xs),
             ) {
@@ -133,75 +141,12 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                 )
                 Text(
-                    "Simple music player for Nothing Phone.",
+                    "There was no Nothing OS vibed music player, so this is our initiative to make one. It is free, open sourced, and made with no ads.",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                     letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
-                )
-            }
-
-            // === Nothing OS Inspiration ===
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = MaterialTheme.colorScheme.tertiaryContainer,
-                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
-                    )
-                    .border(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
-                    )
-                    .padding(NothingOSDesignSystem.Spacing.Xl),
-                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Md),
-            ) {
-                Text(
-                    "Nothing OS Inspired",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onTertiaryContainer,
-                )
-                Text(
-                    "This app draws heavy inspiration from Nothing OS's elegant design philosophy. We embrace the bold monochrome aesthetic, dot-matrix typography, and glassmorphic components that define Nothing's vision.",
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.85f),
-                    letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
-                    lineHeight = 18.sp,
-                )
-            }
-
-            // === Design Philosophy ===
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
-                    )
-                    .border(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                        shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
-                    )
-                    .padding(NothingOSDesignSystem.Spacing.Xl),
-                verticalArrangement = Arrangement.spacedBy(NothingOSDesignSystem.Spacing.Md),
-            ) {
-                Text(
-                    "Our Design Story",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
-                )
-                Text(
-                    "We believe in simplicity and clarity. N-music is built with the Nothing OS design language in mind—minimalist, bold, and unapologetically different. Every element serves a purpose, just like Nothing's dot-matrix design.",
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.85f),
-                    letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
-                    lineHeight = 18.sp,
+                    lineHeight = 19.sp,
                 )
             }
 

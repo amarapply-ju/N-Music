@@ -11,7 +11,7 @@
   </p>
 
   <p align="center">
-    <a href="https://koiverse.github.io/ArchiveTune/"><b>Website & Downloads</b></a> •
+    <a href="https://github.com/koiverse/ArchiveTune/releases/latest"><b>Download Releases</b></a> •
     <a href="https://github.com/koiverse/ArchiveTune"><b>GitHub</b></a> •
     <a href="#features"><b>Features</b></a> •
     <a href="PRIVACY.md"><b>Privacy Policy</b></a> •
@@ -68,21 +68,15 @@ We believe in **simplicity**, **privacy**, and **beautiful design**. Every eleme
 
 ## 📥 Download
 
-**For downloads, features, and installation guides, visit:**
+**The only supported download source right now is GitHub Releases:**
 
-### 🌐 **[Website & Downloads →](https://koiverse.github.io/ArchiveTune/)**
-
-Supported platforms:
-- **GitHub Releases** - Direct downloads
-- **Obtainium** - App manager with auto-updates
-- **IzzyOnDroid** - F-Droid compatible
-- **Nightly Builds** - Pre-release features
+### 📦 **[Download the latest release →](https://github.com/koiverse/ArchiveTune/releases/latest)**
 
 ---
 
 ## 🚀 Getting Started
 
-1. Download N-Music from one of the sources above
+1. Download N-Music from GitHub Releases
 2. Grant necessary permissions
 3. Sign in with your YouTube Music account
 4. Enjoy your music with Nothing OS design

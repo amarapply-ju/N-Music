@@ -22,7 +22,7 @@ The site is configured to serve from the `docs/` folder:
    - Set **Branch** to: `main` and folder to `/docs`
    - Click **Save**
 4. Wait a few minutes for GitHub to build and deploy
-5. Your site will be available at: `https://koiverse.github.io/ArchiveTune/`
+5. Your site will be available at: `https://alimohsenmaruf.github.io/N-Music/`
 
 ## Optional: Custom Domain
 
