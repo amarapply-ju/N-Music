@@ -9,6 +9,7 @@ package moe.koiverse.archivetune.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -117,7 +118,7 @@ fun NothingOSBackground(
 ) {
     androidx.compose.foundation.layout.Box(
         modifier = modifier
-            .background(color = Color(0xFF000000))
+            .background(color = androidx.compose.material3.MaterialTheme.colorScheme.background)
     ) {
         // Apply subtle dot matrix pattern
         DotMatrixOverlay(

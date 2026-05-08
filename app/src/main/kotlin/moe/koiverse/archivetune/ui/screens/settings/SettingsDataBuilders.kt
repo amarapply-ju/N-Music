@@ -23,6 +23,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import moe.koiverse.archivetune.BuildConfig
 import moe.koiverse.archivetune.R
+import moe.koiverse.archivetune.constants.DarkModeKey
+import moe.koiverse.archivetune.ui.screens.settings.DarkMode
+import moe.koiverse.archivetune.utils.rememberEnumPreference
 
 @Composable
 fun buildQuickActions(
@@ -63,8 +66,18 @@ fun buildSettingsGroups(
     hasUpdate: Boolean,
     context: Context,
     resetSearch: () -> Unit,
-): List<SettingsGroup> =
-    buildList {
+): List<SettingsGroup> {
+    val (darkMode, _) = rememberEnumPreference(
+        DarkModeKey,
+        defaultValue = DarkMode.DARK
+    )
+    val currentThemeSubtitle = when (darkMode) {
+        DarkMode.LIGHT -> stringResource(R.string.dark_theme_off)
+        DarkMode.DARK -> stringResource(R.string.dark_theme_on)
+        DarkMode.EXTRA_DARK -> stringResource(R.string.dark_theme_follow_system)
+    }
+    
+    return buildList {
         add(
             SettingsGroup(
                 title = stringResource(R.string.settings_section_ui),
@@ -72,7 +85,7 @@ fun buildSettingsGroups(
                     SettingsItem(
                         icon = painterResource(R.drawable.palette),
                         title = stringResource(R.string.appearance),
-                        subtitle = stringResource(R.string.dark_theme),
+                        subtitle = currentThemeSubtitle,
                         accentColor = MaterialTheme.colorScheme.primary,
                         keywords = listOf("theme", "palette", "material you", "dynamic color", "font", "ui"),
                         onClick = { resetSearch(); navController.navigate("settings/appearance") },
