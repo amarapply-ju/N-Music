@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -48,6 +49,7 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
 
     Scaffold(
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.about)) },
@@ -62,6 +64,9 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                         )
                     }
                 },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                ),
                 windowInsets = LocalPlayerAwareWindowInsets.current.only(
                     WindowInsetsSides.Top + WindowInsetsSides.Horizontal,
                 ),
@@ -71,7 +76,7 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(NothingOSDesignSystem.Colors.Background)
+                .background(MaterialTheme.colorScheme.surface)
                 .padding(paddingValues)
                 .windowInsetsPadding(
                     LocalPlayerAwareWindowInsets.current.only(
@@ -95,13 +100,13 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                     "N-music",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = NothingOSDesignSystem.Colors.White,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
                 Text(
                     "v${BuildConfig.VERSION_NAME}",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    color = NothingOSDesignSystem.Colors.GreyDim,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
 
@@ -110,12 +115,12 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
-                        color = NothingOSDesignSystem.Colors.Surface,
+                        color = MaterialTheme.colorScheme.secondaryContainer,
                         shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
                     )
                     .border(
                         width = 1.dp,
-                        color = NothingOSDesignSystem.Colors.GlassBorder,
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
                         shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Card)
                     )
                     .padding(NothingOSDesignSystem.Spacing.Xl),
@@ -125,13 +130,13 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                     stringResource(R.string.about),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = NothingOSDesignSystem.Colors.White,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer,
                 )
                 Text(
                     "Simple music player for Nothing Phone.",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
-                    color = NothingOSDesignSystem.Colors.Grey100,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer,
                     letterSpacing = NothingOSDesignSystem.Typography.TightSpacing,
                 )
             }
@@ -148,7 +153,7 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                     "Connect with Developer",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    color = NothingOSDesignSystem.Colors.GreyDim,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
 
                 // === Instagram Button (Pill Style) ===
@@ -159,8 +164,8 @@ fun AboutScreen(navController: NavController, scrollBehavior: TopAppBarScrollBeh
                         .height(NothingOSDesignSystem.ComponentSize.ButtonHeight),
                     shape = RoundedCornerShape(NothingOSDesignSystem.BorderRadius.Pill),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = NothingOSDesignSystem.Colors.Surface,
-                        contentColor = NothingOSDesignSystem.Colors.White,
+                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                     ),
                 ) {
                     Text(

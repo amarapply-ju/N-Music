@@ -433,8 +433,12 @@ private fun FloatingNavigationToolbarItem(
 
 @Composable
 private fun floatingToolbarContainerColor(pureBlack: Boolean): Color {
-    // Nothing OS glassmorphic pill: semi-transparent dark glass effect
-    return if (pureBlack) Color(0x80141414) else Color(0x80191919).copy(alpha = 0.8f) // rgba(20, 20, 20, 0.5)
+    // Nothing OS glassmorphic pill: semi-transparent surface with theme awareness
+    return if (pureBlack) {
+        Color(0x80141414) // Pure black for extra dark mode
+    } else {
+        MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.9f)
+    }
 }
 
 @Composable

@@ -238,13 +238,13 @@ fun SettingsScreen(
                     },
                     scrollBehavior = scrollBehavior,
                     colors = TopAppBarDefaults.largeTopAppBarColors(
-                        containerColor = NothingOSDesignSystem.Colors.GlassDark,
-                        scrolledContainerColor = NothingOSDesignSystem.Colors.Surface,
+                        containerColor = MaterialTheme.colorScheme.surface,
+                        scrolledContainerColor = MaterialTheme.colorScheme.surface,
                     ),
                 )
             }
         },
-        containerColor = NothingOSDesignSystem.Colors.Background,
+        containerColor = MaterialTheme.colorScheme.surface,
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         modifier = Modifier.fillMaxSize(),
     ) { innerPadding ->
