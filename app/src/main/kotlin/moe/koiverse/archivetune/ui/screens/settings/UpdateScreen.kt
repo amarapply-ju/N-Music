@@ -16,7 +16,6 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -52,9 +51,6 @@ import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -88,15 +84,12 @@ import moe.koiverse.archivetune.BuildConfig
 import moe.koiverse.archivetune.LocalPlayerAwareWindowInsets
 import moe.koiverse.archivetune.R
 import moe.koiverse.archivetune.constants.EnableUpdateNotificationKey
-import moe.koiverse.archivetune.constants.UpdateChannel
-import moe.koiverse.archivetune.constants.UpdateChannelKey
 import moe.koiverse.archivetune.ui.component.IconButton
 import moe.koiverse.archivetune.ui.component.PreferenceGroupTitle
 import moe.koiverse.archivetune.ui.utils.backToMain
 import moe.koiverse.archivetune.utils.GitCommit
 import moe.koiverse.archivetune.utils.UpdateNotificationManager
 import moe.koiverse.archivetune.utils.Updater
-import moe.koiverse.archivetune.utils.rememberEnumPreference
 import moe.koiverse.archivetune.utils.rememberPreference
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -110,22 +103,16 @@ fun UpdateScreen(
 ) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
-    val nightlyInstallUrl = "https://nightly.link/koiverse/ArchiveTune/workflows/build/dev/app-mobile-universal-release"
 
     val (enableUpdateNotification, onEnableUpdateNotificationChange) = rememberPreference(
         EnableUpdateNotificationKey,
         defaultValue = false
-    )
-    val (updateChannel, onUpdateChannelChange) = rememberEnumPreference(
-        UpdateChannelKey,
-        defaultValue = UpdateChannel.STABLE
     )
 
     var commits by remember { mutableStateOf<List<GitCommit>>(emptyList()) }
     var isLoadingCommits by remember { mutableStateOf(true) }
     var latestVersion by remember { mutableStateOf<String?>(null) }
     var isExpanded by rememberSaveable { mutableStateOf(true) }
-    var showNightlyChannelConfirmDialog by rememberSaveable { mutableStateOf(false) }
     var showEnableUpdateNotificationConfirmDialog by rememberSaveable { mutableStateOf(false) }
     var hasNotificationPermission by remember {
         mutableStateOf(
@@ -139,7 +126,6 @@ fun UpdateScreen(
             }
         )
     }
-    val isNightlyChannel = updateChannel == UpdateChannel.NIGHTLY
     val isUpdateAvailable by remember(latestVersion) {
         derivedStateOf {
             latestVersion?.let { !Updater.isSameVersion(it, BuildConfig.VERSION_NAME) } ?: false
@@ -169,13 +155,13 @@ fun UpdateScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "ArchiveTune provides two download channels for builds:",
+                        text = "This page checks the official GitHub Releases for the latest stable version.",
                         style = MaterialTheme.typography.bodyMedium
                     )
 
                     Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         Text(
-                            text = "• Stable builds",
+                            text = "• Stable releases",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -189,28 +175,12 @@ fun UpdateScreen(
                         )
                     }
 
-                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        Text(
-                            text = "• Nightly builds",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = "Automatically generated development builds hosted via nightly.link.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Text(
-                            text = "Nightly builds may include experimental features, unfinished changes, or temporary regressions.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-
                     Text(
-                        text = "Nightly builds are provided for testing and early access only.\nStability, compatibility, and functionality are not guaranteed.",
+                        text = "Update notifications will follow the latest stable release from the repository.",
                         style = MaterialTheme.typography.bodySmall
                     )
                     Text(
-                        text = "By continuing, you acknowledge that nightly builds may be unstable and use them at your own risk.",
+                        text = "Enable this if you want to be notified when a new stable version is published.",
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -238,80 +208,6 @@ fun UpdateScreen(
         )
     }
 
-    if (showNightlyChannelConfirmDialog) {
-        AlertDialog(
-            onDismissRequest = { showNightlyChannelConfirmDialog = false },
-            title = { Text(stringResource(R.string.channel_nightly)) },
-            text = {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "ArchiveTune provides two download channels for builds:",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-
-                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        Text(
-                            text = "• Stable builds",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = "Distributed via official GitHub Releases.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Text(
-                            text = "These versions are tested and recommended for most users.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-
-                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                        Text(
-                            text = "• Nightly builds",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = "Automatically generated development builds hosted via nightly.link.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Text(
-                            text = "Nightly builds may include experimental features, unfinished changes, or temporary regressions.",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-
-                    Text(
-                        text = "Nightly builds are provided for testing and early access only.\nStability, compatibility, and functionality are not guaranteed.",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = "By continuing, you acknowledge that nightly builds may be unstable and use them at your own risk.",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showNightlyChannelConfirmDialog = false
-                        onUpdateChannelChange(UpdateChannel.NIGHTLY)
-                    }
-                ) {
-                    Text(stringResource(android.R.string.ok))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showNightlyChannelConfirmDialog = false }) {
-                    Text(stringResource(android.R.string.cancel))
-                }
-            }
-        )
-    }
-
     LaunchedEffect(Unit) {
         Updater.getLatestVersionName().onSuccess {
             latestVersion = it
@@ -328,11 +224,7 @@ fun UpdateScreen(
         targetValue = if (isExpanded) 180f else 0f,
         label = "rotation"
     )
-    val topBarSubtitle = if (isNightlyChannel) {
-        stringResource(R.string.updates_subtitle_nightly)
-    } else {
-        stringResource(R.string.updates_subtitle_stable)
-    }
+    val topBarSubtitle = stringResource(R.string.updates_subtitle_stable)
 
     Scaffold(
         modifier = Modifier
@@ -392,7 +284,6 @@ fun UpdateScreen(
                 UpdateSummaryCard(
                     currentVersion = BuildConfig.VERSION_NAME,
                     latestVersion = latestVersion,
-                    updateChannel = updateChannel,
                     isUpdateAvailable = isUpdateAvailable,
                     onOpenChangelog = { navController.navigate("settings/changelog") }
                 )
@@ -454,132 +345,26 @@ fun UpdateScreen(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerLow
                     )
                 ) {
-                    Column {
-                        ListItem(
-                            headlineContent = {
-                                Text(text = stringResource(R.string.update_channel))
-                            },
-                            supportingContent = {
-                                Text(text = stringResource(R.string.update_channel_desc))
-                            },
-                            leadingContent = {
-                                FeatureIcon(
-                                    iconRes = R.drawable.tune,
-                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                )
-                            },
-                            trailingContent = {
-                                Text(
-                                    text = when (updateChannel) {
-                                        UpdateChannel.STABLE -> stringResource(R.string.channel_stable)
-                                        UpdateChannel.NIGHTLY -> stringResource(R.string.channel_nightly)
-                                    },
-                                    style = MaterialTheme.typography.labelLarge,
-                                    color = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            colors = ListItemDefaults.colors(containerColor = Color.Transparent)
-                        )
-
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            color = MaterialTheme.colorScheme.outlineVariant,
-                        )
-
-                        SingleChoiceSegmentedButtonRow(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 16.dp)
-                        ) {
-                            SegmentedButton(
-                                selected = updateChannel == UpdateChannel.STABLE,
-                                onClick = { onUpdateChannelChange(UpdateChannel.STABLE) },
-                                shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
-                                icon = {},
-                            ) {
-                                Text(text = stringResource(R.string.channel_stable))
-                            }
-                            SegmentedButton(
-                                selected = updateChannel == UpdateChannel.NIGHTLY,
-                                onClick = {
-                                    if (updateChannel != UpdateChannel.NIGHTLY) {
-                                        showNightlyChannelConfirmDialog = true
-                                    }
-                                },
-                                shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
-                                icon = {},
-                            ) {
-                                Text(text = stringResource(R.string.channel_nightly))
-                            }
-                        }
-                    }
-                }
-            }
-
-            item {
-                AnimatedVisibility(visible = isNightlyChannel) {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.extraLarge,
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-                        )
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(20.dp),
-                            verticalArrangement = Arrangement.spacedBy(16.dp),
-                        ) {
-                            ListItem(
-                                overlineContent = {
-                                    Text(text = stringResource(R.string.channel_nightly))
-                                },
-                                headlineContent = {
-                                    Text(
-                                        text = stringResource(R.string.updates_nightly_title),
-                                        fontWeight = FontWeight.SemiBold,
-                                    )
-                                },
-                                supportingContent = {
-                                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                        Text(text = stringResource(R.string.updates_nightly_description))
-                                        Text(
-                                            text = stringResource(
-                                                R.string.updates_latest_commit,
-                                                latestCommit?.sha ?: "-"
-                                            ),
-                                            style = MaterialTheme.typography.labelMedium,
-                                            fontFamily = FontFamily.Monospace,
-                                            color = MaterialTheme.colorScheme.primary,
-                                        )
-                                    }
-                                },
-                                leadingContent = {
-                                    FeatureIcon(
-                                        iconRes = R.drawable.download,
-                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                    )
-                                },
-                                colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+                    ListItem(
+                        headlineContent = {
+                            Text(text = stringResource(R.string.latest_version_format, latestVersion ?: "..."))
+                        },
+                        supportingContent = {
+                            Text(
+                                text = stringResource(R.string.updates_status_checking),
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis,
                             )
-
-                            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-                            OutlinedButton(
-                                onClick = { uriHandler.openUri(nightlyInstallUrl) },
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.download),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(18.dp),
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(text = stringResource(R.string.download))
-                            }
-                        }
-                    }
+                        },
+                        leadingContent = {
+                            FeatureIcon(
+                                iconRes = R.drawable.download,
+                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                            )
+                        },
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+                    )
                 }
             }
 
@@ -710,28 +495,13 @@ fun UpdateScreen(
 private fun UpdateSummaryCard(
     currentVersion: String,
     latestVersion: String?,
-    updateChannel: UpdateChannel,
     isUpdateAvailable: Boolean,
     onOpenChangelog: () -> Unit,
 ) {
-    val channelLabel = when (updateChannel) {
-        UpdateChannel.STABLE -> stringResource(R.string.channel_stable)
-        UpdateChannel.NIGHTLY -> stringResource(R.string.channel_nightly)
-    }
     val supportingText = when {
         latestVersion == null -> stringResource(R.string.updates_status_checking)
         isUpdateAvailable -> stringResource(R.string.latest_version_format, latestVersion)
         else -> stringResource(R.string.updates_status_current)
-    }
-    val channelContainerColor = if (updateChannel == UpdateChannel.NIGHTLY) {
-        MaterialTheme.colorScheme.tertiaryContainer
-    } else {
-        MaterialTheme.colorScheme.secondaryContainer
-    }
-    val channelContentColor = if (updateChannel == UpdateChannel.NIGHTLY) {
-        MaterialTheme.colorScheme.onTertiaryContainer
-    } else {
-        MaterialTheme.colorScheme.onSecondaryContainer
     }
 
     Card(
@@ -765,19 +535,6 @@ private fun UpdateSummaryCard(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                     )
-                },
-                trailingContent = {
-                    Surface(
-                        shape = MaterialTheme.shapes.large,
-                        color = channelContainerColor,
-                    ) {
-                        Text(
-                            text = channelLabel,
-                            style = MaterialTheme.typography.labelLarge,
-                            color = channelContentColor,
-                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                        )
-                    }
                 },
                 colors = ListItemDefaults.colors(containerColor = Color.Transparent)
             )

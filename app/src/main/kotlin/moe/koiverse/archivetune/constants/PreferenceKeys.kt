@@ -582,7 +582,6 @@ val RemindAfterKey = intPreferencesKey("remind_after")
 
 // Update settings
 val EnableUpdateNotificationKey = booleanPreferencesKey("enableUpdateNotification")
-val UpdateChannelKey = stringPreferencesKey("updateChannel")
 val LastUpdateCheckKey = longPreferencesKey("lastUpdateCheck")
 val LastNotifiedVersionKey = stringPreferencesKey("lastNotifiedVersion")
 
@@ -597,8 +596,3 @@ val GitHubReleasesFingerprintKey = stringPreferencesKey("github_releases_fingerp
 
 val TogetherOnlineEndpointCacheKey = stringPreferencesKey("together_online_endpoint_cache")
 val TogetherOnlineEndpointLastCheckedAtKey = longPreferencesKey("together_online_endpoint_last_checked_at")
-
-enum class UpdateChannel {
-    STABLE,
-    NIGHTLY,
-}

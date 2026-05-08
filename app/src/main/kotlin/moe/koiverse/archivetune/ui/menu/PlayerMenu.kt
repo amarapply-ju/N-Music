@@ -481,7 +481,7 @@ fun PlayerMenu(
                             },
                             text = stringResource(R.string.music_recognition),
                             onClick = {
-                                (navController as? androidx.navigation.NavHostController)?.openMusicRecognition()
+                                navController.openMusicRecognition()
                                 onDismiss()
                             }
                         ),

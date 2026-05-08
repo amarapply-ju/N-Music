@@ -7,13 +7,13 @@
 
 package moe.koiverse.archivetune.musicrecognition
 
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 
 const val MusicRecognitionRoute = "music_recognition"
 const val ACTION_MUSIC_RECOGNITION = "moe.koiverse.archivetune.action.MUSIC_RECOGNITION"
 const val MusicRecognitionAutoStartRequestKey = "music_recognition_auto_start_request"
 
-fun NavHostController.openMusicRecognition(
+fun NavController.openMusicRecognition(
     autoStartRequestId: Long = System.currentTimeMillis(),
 ) {
     val currentRoute = currentDestination?.route

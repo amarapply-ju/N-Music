@@ -29,7 +29,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import moe.koiverse.archivetune.BuildConfig
 import moe.koiverse.archivetune.MainActivity
@@ -37,8 +36,6 @@ import moe.koiverse.archivetune.R
 import moe.koiverse.archivetune.constants.EnableUpdateNotificationKey
 import moe.koiverse.archivetune.constants.LastNotifiedVersionKey
 import moe.koiverse.archivetune.constants.LastUpdateCheckKey
-import moe.koiverse.archivetune.constants.UpdateChannel
-import moe.koiverse.archivetune.constants.UpdateChannelKey
 import java.util.concurrent.TimeUnit
 
 object UpdateNotificationManager {
@@ -98,14 +95,6 @@ object UpdateNotificationManager {
                 }
 
                 schedulePeriodicUpdateCheck(context)
-
-                val updateChannel = dataStore.data.map { 
-                    it[UpdateChannelKey]?.let { value -> 
-                        try { UpdateChannel.valueOf(value) } catch (e: Exception) { UpdateChannel.STABLE }
-                    } ?: UpdateChannel.STABLE
-                }.first()
-
-                if (updateChannel == UpdateChannel.NIGHTLY) return@launch
 
                 val lastCheck = dataStore.data.map { it[LastUpdateCheckKey] ?: 0L }.first()
                 val now = System.currentTimeMillis()
