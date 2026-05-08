@@ -11,6 +11,8 @@ jobs:
   check-version:
     if: contains(github.ref, 'refs/tags') == false
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       version_changed: ${{ steps.check_version.outputs.version_changed }}
       new_version: ${{ steps.check_version.outputs.new_version }}
@@ -39,12 +41,14 @@ jobs:
           echo "Detected version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
 
-          # 3. Check if this version is already released (Tag Existence Check)
-          if git rev-parse "v$NEW_VERSION" >/dev/null 2>&1; then
-            echo "Tag v$NEW_VERSION already exists. Skipping release."
+          # 3. Check if this version is already released on GitHub.
+          # A local git tag is not enough here because releases can be missing even when
+          # the tag already exists in the repository history.
+          if gh release view "v$NEW_VERSION" >/dev/null 2>&1; then
+            echo "Release v$NEW_VERSION already exists. Skipping release."
             echo "version_changed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "Tag v$NEW_VERSION does not exist. Proceeding with release."
+            echo "Release v$NEW_VERSION does not exist. Proceeding with release."
             echo "version_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
