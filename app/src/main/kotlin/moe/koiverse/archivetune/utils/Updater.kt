@@ -17,6 +17,7 @@ import moe.koiverse.archivetune.constants.GitHubReleasesEtagKey
 import moe.koiverse.archivetune.constants.GitHubReleasesFingerprintKey
 import moe.koiverse.archivetune.constants.GitHubReleasesJsonKey
 import moe.koiverse.archivetune.constants.GitHubReleasesLastCheckedAtKey
+import moe.koiverse.archivetune.constants.GitHubRepoPathKey
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
@@ -306,10 +307,16 @@ object Updater {
     ): Result<List<ReleaseInfo>> =
         runCatching {
             val now = System.currentTimeMillis()
-            val cachedJson = App.instance.dataStore.getAsync(GitHubReleasesJsonKey)
+            var cachedJson = App.instance.dataStore.getAsync(GitHubReleasesJsonKey)
             val cachedEtag = App.instance.dataStore.getAsync(GitHubReleasesEtagKey)
             val lastCheckedAt = App.instance.dataStore.getAsync(GitHubReleasesLastCheckedAtKey, 0L)
             val cachedFingerprint = App.instance.dataStore.getAsync(GitHubReleasesFingerprintKey)
+            val cachedRepoPath = App.instance.dataStore.getAsync(GitHubRepoPathKey)
+
+            // If cached releases belong to a different repo, invalidate cache so we fetch fresh data
+            if (!cachedRepoPath.isNullOrBlank() && cachedRepoPath != GitHubRepoPath) {
+                cachedJson = null
+            }
 
             val cachedReleases =
                 cachedJson
@@ -364,6 +371,8 @@ object Updater {
                     App.instance.dataStore.edit { settings ->
                         settings[GitHubReleasesLastCheckedAtKey] = now
                         networkResult.etag?.let { settings[GitHubReleasesEtagKey] = it }
+                        // Persist current repo path so future runs can detect repo changes
+                        settings[GitHubRepoPathKey] = GitHubRepoPath
                         if (hasPayloadChanged || hasTopReleaseChanged || cachedJson.isNullOrBlank()) {
                             settings[GitHubReleasesJsonKey] = networkBody
                             settings[GitHubReleasesFingerprintKey] = newFingerprint

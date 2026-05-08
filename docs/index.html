@@ -199,6 +199,8 @@
   .hero-stats span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:6px}
   @media (max-width:720px){ .hero-stats{grid-template-columns:repeat(2,1fr)} }
 
+  .hero .btn.primary:hover{color:#000}
+
   .glyph{position:absolute;right:var(--pad);top:30%;width:240px;height:240px;border:1px solid var(--line-2);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:spin 22s linear infinite;opacity:.7}
   .glyph::before{content:"";width:160px;height:160px;border:1px solid var(--red);border-radius:50%;box-shadow:0 0 40px var(--red-glow), inset 0 0 40px var(--red-glow)}
   .glyph::after{content:"";position:absolute;width:6px;height:6px;background:var(--red);top:10px;border-radius:50%;box-shadow:0 0 16px var(--red)}
@@ -426,6 +428,73 @@
 
   .theme-toggle .icon{font-size:14px}
 
+  /* Mobile improvements */
+  .mobile-menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.08);padding:8px 10px;border-radius:8px;color:var(--fg);font-size:18px}
+  .mobile-nav{display:none}
+
+  @media (max-width:720px){
+    .mobile-menu-toggle{display:inline-flex}
+    .nav-links{display:none}
+    .hero{padding-top:32px;padding-bottom:40px}
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:6px 8px;
+      align-items:start;
+      margin-bottom:24px;
+      font-size:8px;
+      letter-spacing:.12em;
+    }
+    .hero-meta span{min-width:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .hero h1{font-size:clamp(40px, 13vw, 92px)}
+    .tagline{font-size:14px;line-height:1.6;max-width:100%}
+    .hero-cta{flex-direction:column}
+    .hero-cta .btn{width:100%;justify-content:center;padding:12px 18px;font-size:11px;letter-spacing:.18em}
+    .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:32px;padding-top:20px}
+    .hero-stats div{font-size:24px}
+    .hero-stats span{font-size:9px;letter-spacing:.14em}
+    .dl .wrap{grid-template-columns:1fr;gap:18px}
+    .dl-side{font-size:48px;text-align:left}
+    .phone{flex:0 0 220px}
+    h1{font-size: clamp(36px, 12vw, 120px)}
+    .sec-head{align-items:flex-start;margin-bottom:28px}
+    .sec-head p{max-width:100%}
+    .features{grid-template-columns:repeat(2,minmax(0,1fr));gap:1px}
+    .feature{padding:18px;min-height:180px}
+    .feature h3{margin:14px 0 8px;font-size:clamp(18px, 5vw, 24px)}
+    .feature p{font-size:12px;line-height:1.45}
+    .feature .num{font-size:12px}
+    .screens{gap:16px;padding-bottom:16px}
+    .phone{flex:0 0 220px}
+    .os{gap:24px}
+    .os blockquote{font-size:clamp(24px, 10vw, 34px)}
+    .os .panel{padding:22px}
+    summary{font-size:20px}
+    details{padding:20px 0}
+    .dl p{max-width:100%}
+    .dl .btn{width:100%;justify-content:center}
+    .foot{gap:12px}
+    .foot .legal{font-size:9px;line-height:1.4}
+
+    .mobile-nav{display:block;position:absolute;top:64px;right:var(--pad);background:var(--bg);border:1px solid var(--line);padding:8px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.6);min-width:180px}
+    .mobile-nav a{display:block;padding:10px 12px;color:var(--fg);border-bottom:1px solid var(--line);text-transform:uppercase;font-size:13px}
+    .mobile-nav a:last-child{border-bottom:0}
+    .mobile-nav[aria-hidden="true"]{display:none}
+  }
+
+  @media (max-width:420px){
+    .hero-meta{font-size:7px;gap:4px 6px}
+    .hero-meta span{letter-spacing:.08em}
+    .hero h1{font-size:clamp(34px, 14vw, 72px)}
+    .tagline{font-size:13px}
+    .hero-stats{grid-template-columns:1fr 1fr;gap:10px}
+    .features{grid-template-columns:1fr}
+    .feature{min-height:auto;padding:16px}
+    .feature p{font-size:11px}
+    .screens{gap:12px}
+    .phone{flex:0 0 200px}
+  }
+
 </style>
 </head>
 <body>
@@ -441,8 +510,16 @@
         <a href="#screens">Screens</a>
         <a href="#source">Source</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/alimohsenmaruf/N-Music/releases/latest">Download App</a>
+        <a href="https://github.com/alimohsenmaruf/N-Music/releases/download/v1.0/app-mobile-universal-release.apk">Download APK</a>
       </nav>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu"><span class="icon">☰</span></button>
+      <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#source">Source</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/alimohsenmaruf/N-Music/releases/download/v1.0/app-mobile-universal-release.apk">Download APK</a>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="icon">◐</span></button>
     </div>
   </div>
@@ -459,7 +536,7 @@
     <h1 id="heroTitle" aria-label="N-Music">N-MUSIC</h1>
     <p class="tagline">A <strong>Nothing-styled</strong> music player. A simple YouTube Music wrapper — <strong>free</strong>, <strong>open source</strong>, made with <strong>no ads</strong>. Our take on a Spotify alternative, designed for the dot-matrix soul.</p>
     <div class="hero-cta">
-      <a class="btn primary" href="#download" data-href-release><span>Download APK</span> <span class="arr">→</span></a>
+      <a class="btn primary" href="https://github.com/alimohsenmaruf/N-Music/releases/download/v1.0/app-mobile-universal-release.apk" target="_blank"><span>Download APK</span> <span class="arr">→</span></a>
       <a class="btn" href="#source" data-href-repo><span>View Source</span> <span class="arr">↗</span></a>
     </div>
     <div class="hero-stats">
@@ -678,6 +755,31 @@
   }
 
   initTheme();
+
+  // Mobile nav toggle
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  if (mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = mobileNav.classList.toggle('open');
+      mobileNav.setAttribute('aria-hidden', !open);
+    });
+
+    // close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // close on nav link click
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      mobileNav.setAttribute('aria-hidden', 'true');
+    }));
+  }
 </script>
 </body>
 </html>
