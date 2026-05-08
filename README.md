@@ -1,163 +1,82 @@
-<div align="center">
+# N-Music
 
-  <img src="https://github.com/alimohsenmaruf/N-Music/raw/main/fastlane/metadata/android/en-US/images/icon.png" width="120" height="120" alt="N-Music Logo" style="border-radius: 22%">
+A Nothing OS inspired music player for Android.
 
-  <h1>N-Music</h1>
+N-Music focuses on a clean UI, smooth playback, and a lightweight experience.
 
-  <p align="center">
-    <strong>Nothing OS Inspired Music Player for Android</strong>
-    <br />
-    <em>Privacy-focused • Ad-free • Beautiful Design</em>
-  </p>
+## Quick Links
 
-  <p align="center">
-    <a href="https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest"><b>Download Releases</b></a> •
-    <a href="https://github.com/alimohsenmaruf/N-Music"><b>GitHub</b></a> •
-    <a href="#features"><b>Features</b></a> •
-    <a href="PRIVACY.md"><b>Privacy Policy</b></a> •
-    <a href="CONTRIBUTING.md"><b>Contributing</b></a>
-  </p>
+- Latest release: https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest
+- Source repository: https://github.com/alimohsenmaruf/N-Music
+- Privacy policy: PRIVACY.md
+- Contributing guide: CONTRIBUTING.md
 
-  <br />
+## Screenshots
 
-  <img src="https://img.shields.io/github/v/release/alimohsenmaruf/N-Music?style=flat-square&color=000000&labelColor=ffffff" alt="Latest Release" />
-  <img src="https://img.shields.io/badge/Architecture-MVVM-000000?style=flat-square&labelColor=ffffff" alt="MVVM" />
-  <img src="https://img.shields.io/badge/Language-Kotlin-000000?style=flat-square&labelColor=ffffff" alt="Kotlin" />
-  <img src="https://img.shields.io/badge/License-GPL--3.0-000000?style=flat-square&labelColor=ffffff" alt="GPL-3.0" />
+<table>
+  <tr>
+    <td><img src="docs/assets/screenshots/home.png" alt="N-Music home" width="220" /></td>
+    <td><img src="docs/assets/screenshots/settings.png" alt="N-Music settings" width="220" /></td>
+    <td><img src="docs/assets/screenshots/genres.png" alt="N-Music mood and genres" width="220" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/assets/screenshots/library.png" alt="N-Music library" width="220" /></td>
+    <td><img src="docs/assets/screenshots/player.png" alt="N-Music now playing" width="220" /></td>
+    <td></td>
+  </tr>
+</table>
 
-</div>
+## Features
 
----
+- YouTube Music integration
+- Nothing OS inspired UI
+- Playlist and library management
+- Lyrics support
+- Last.fm and ListenBrainz integrations
+- Discord rich presence support
+- Lightweight APK
 
-## 🎵 About N-Music
+## Download
 
-N-Music is a Nothing OS-inspired music player for Android. Built from the ground up with privacy in mind, it offers an ad-free listening experience with full YouTube Music integration, custom themes, live lyrics, and much more.
+Use GitHub Releases:
 
-We believe in **simplicity**, **privacy**, and **beautiful design**. Every element serves a purpose, inspired by Nothing OS's bold aesthetic.
+https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest
 
----
+## Build From Source
 
-## ✨ Key Features
+Requirements:
 
-### Playback & Audio
-- **Ad-free playback** with background listening
-- **Equalizer** with tempo, pitch, and speed control
-- **Crossfade** between tracks
-- **HRTF spatial audio** support
-- **Local file** playback alongside YouTube Music
+- JDK 21
+- Android SDK
 
-### Design & Customization
-- **Nothing OS inspired** aesthetic with glassmorphic components
-- **Dynamic color** extraction from album artwork
-- **Material 3 design** with multiple theme modes
-- **Deep customization** of interface, controls, and animations
-
-### Discovery & Lyrics
-- **Live synced lyrics** with translation and romanization
-- **Music recognition** for songs around you
-- **Listening statistics** and history tracking
-- **Artist & album browsing** with rich metadata
-
-### Integrations
-- **YouTube Music** account sync and library support
-- **Last.fm** scrobbling and recommendations
-- **ListenBrainz** music metadata integration
-- **Discord** rich presence support
-
----
-
-## 📥 Download
-
-**The only supported download source right now is GitHub Releases:**
-
-### 📦 **[Download the latest release →](https://github.com/alimohsenmaruf/N-Music/releases/tag/Latest)**
-
----
-
-## 🚀 Getting Started
-
-1. Download N-Music from GitHub Releases
-2. Grant necessary permissions
-3. Sign in with your YouTube Music account
-4. Enjoy your music with Nothing OS design
-
-For detailed setup instructions, see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md)
-
----
-
-## 🛠️ Development
-
-N-Music is built with:
-- **Kotlin** - Modern, safe programming language
-- **Jetpack Compose** - Declarative UI framework
-- **Material Design 3** - Google's design system
-- **MVVM Architecture** - Scalable app structure
-
-### Contributing
-
-We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
+Commands:
 
 ```bash
-# Clone and build
-git clone https://github.com/koiverse/ArchiveTune.git
-cd ArchiveTune
-./gradlew build
+git clone https://github.com/alimohsenmaruf/N-Music.git
+cd N-Music
+./gradlew assembleMobileUniversalDebug
 ```
 
----
+Release build (with signing configured):
 
-## 📋 Requirements
+```bash
+./gradlew assembleMobileUniversalRelease
+```
 
-- Android 6.0 or higher
-- YouTube Music account (for YouTube Music features)
-- Internet connection for audio streaming
+## Project Modules
 
----
+- app: Android application
+- innertube: YouTube integration layer
+- lastfm: Last.fm integration
+- lrclib: lyrics support
+- betterlyrics: lyrics provider support
+- simpmusic, kizzy, kugou, shazamkit: integration modules
 
-## ⚠️ Important Notes
+## Support
 
-- N-Music is an **independent third-party client**, not affiliated with Google LLC or YouTube
-- Geographic availability: VPN may be required if YouTube Music isn't available in your region
-- Always support artists by purchasing music through official channels when possible
+- Issues and feature requests: https://github.com/alimohsenmaruf/N-Music/issues
 
----
+## License
 
-## 🌐 Localization
-
-Help translate N-Music for your language:
-[![Translation Status](https://translate.codeberg.org/widget/archivetune/horizontal-blue.svg)](https://translate.codeberg.org/engage/archivetune/)
-
----
-
-## 🤝 Acknowledgments
-
-Built on the shoulders of open-source excellence:
-- **Metrolist** - Framework foundation
-- **Kizzy** - Discord integration
-- **SimpMusic** - Lyrics provider
-- **BetterLyrics** - Lyrics and artwork APIs
-- [Material Color Utilities](https://github.com/material-foundation/material-color-utilities)
-- Global community of translators and testers
-
----
-
-## 📝 License
-
-N-Music is licensed under the GNU General Public License v3.0 - see [LICENSE](LICENSE) for details.
-
----
-
-## 📞 Support & Contact
-
-- **GitHub Issues** - Report bugs or request features
-- **Instagram** - [@ali.mohsen.maruf](https://instagram.com/ali.mohsen.maruf)
-- **Privacy Policy** - [PRIVACY.md](PRIVACY.md)
-
----
-
-<div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/koiverse">Koiverse</a></p>
-  <p>
-    <a href="https://github.com/koiverse/ArchiveTune">⭐ Star us on GitHub</a>
-  </p>
-</div>
+Licensed under GPL-3.0.
+See LICENSE for details.

@@ -274,7 +274,7 @@
     }
   }
 
-  .phone{flex:0 0 280px;scroll-snap-align:center;aspect-ratio:9/19.5;border:2px solid #2a2a2a;border-radius:38px;padding:10px;background:#0a0a0a;position:relative;box-shadow:0 30px 80px -30px rgba(215,25,33,.25)}
+  .phone{flex:0 0 280px;scroll-snap-align:center;aspect-ratio:9/19.5;border:2px solid #2a2a2a;border-radius:38px;padding:10px;background:#0a0a0a;position:relative;box-shadow:0 30px 80px -30px rgba(215,25,33,.25);overflow:hidden}
   
   @media (prefers-color-scheme: light) {
     .phone {
@@ -291,6 +291,7 @@
     }
   }
 
+  .phone img{height:100%;width:100%;border-radius:30px;object-fit:cover;display:block}
   .screen{height:100%;border-radius:30px;overflow:hidden;position:relative;background:radial-gradient(120% 80% at 50% 0%, rgba(215,25,33,.3), transparent 60%), #0a0a0a;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 18px}
   .screen .ttl{font-family:var(--dot);font-size:22px;color:#fff;letter-spacing:.08em}
   .screen .sub{font-size:10px;color:#999;margin-top:4px;letter-spacing:.2em;text-transform:uppercase}
@@ -507,12 +508,14 @@
           <span class="label">[ 02 / Screens ]</span>
           <h2 style="margin-top:18px">Pure form.</h2>
         </div>
-        <p>Three glances at the player. Built for one-handed dark-mode glory.</p>
+        <p>Real app screenshots from N-Music across home, settings, discovery, library, and now-playing flows.</p>
       </div>
       <div class="screens">
-        <div class="phone"><div class="screen"><span class="sub">Now Playing</span><span class="ttl">DOT MATRIX</span><span class="sub" style="margin-top:2px">Nothing Tape · Side A</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
-        <div class="phone alt"><div class="screen"><span class="sub">Library</span><span class="ttl">YOUR SOUND</span><span class="sub" style="margin-top:2px">128 tracks · 9 playlists</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
-        <div class="phone alt2"><div class="screen"><span class="sub">Search</span><span class="ttl">FIND IT</span><span class="sub" style="margin-top:2px">YT Music · instant</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+        <div class="phone"><img src="assets/screenshots/home.png" alt="N-Music home screen" loading="lazy" /></div>
+        <div class="phone"><img src="assets/screenshots/settings.png" alt="N-Music settings screen" loading="lazy" /></div>
+        <div class="phone"><img src="assets/screenshots/genres.png" alt="N-Music mood and genres screen" loading="lazy" /></div>
+        <div class="phone"><img src="assets/screenshots/library.png" alt="N-Music library screen" loading="lazy" /></div>
+        <div class="phone"><img src="assets/screenshots/player.png" alt="N-Music now playing screen" loading="lazy" /></div>
       </div>
     </div>
   </section>
