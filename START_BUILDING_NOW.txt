@@ -12,7 +12,7 @@
 Step 1: Navigate to project
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+  cd /home/jeopardous4/Downloads/ArchiveTune-1.0
 
 
 Step 2: Build the APK
@@ -110,23 +110,23 @@ Open the app and check:
 🚀 LAUNCH COMMANDS (Copy & Paste)
 
 Quick build (recommended):
-  cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0 && \
+  cd /home/jeopardous4/Downloads/ArchiveTune-1.0 && \
   chmod +x build-nmusic.sh && \
   ./build-nmusic.sh
 
 Manual build:
-  cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0 && \
+  cd /home/jeopardous4/Downloads/ArchiveTune-1.0 && \
   source /home/jeopardous4/archivetune-env.sh && \
   ./gradlew assembleDebug
 
 Build without environment (full path):
   /usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar \
-    /home/jeopardous4/Downloads/ArchiveTune-13.2.0/gradle/wrapper/gradle-wrapper.jar \
-    -p /home/jeopardous4/Downloads/ArchiveTune-13.2.0 assembleDebug
+    /home/jeopardous4/Downloads/ArchiveTune-1.0/gradle/wrapper/gradle-wrapper.jar \
+    -p /home/jeopardous4/Downloads/ArchiveTune-1.0 assembleDebug
 
 Install to device (after build):
   adb install -r \
-    /home/jeopardous4/Downloads/ArchiveTune-13.2.0/\
+    /home/jeopardous4/Downloads/ArchiveTune-1.0/\
     app/build/outputs/apk/mobile/debug/app-mobile-debug.apk
 
 
@@ -170,7 +170,7 @@ UI_MODIFICATION_PLAN.md
 🎯 NEXT ACTIONS
 
 Recommended Path:
-  1. Run: cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+  1. Run: cd /home/jeopardous4/Downloads/ArchiveTune-1.0
   2. Run: ./build-nmusic.sh
   3. Wait for build to complete
   4. Connect Android device or start emulator
@@ -210,7 +210,7 @@ Font/theme not showing:
   Force stop and restart app
 
 More help:
-  Read: /home/jeopardous4/Downloads/ArchiveTune-13.2.0/N-MUSIC_READY_TO_BUILD.txt
+  Read: /home/jeopardous4/Downloads/ArchiveTune-1.0/N-MUSIC_READY_TO_BUILD.txt
 
 
 ───────────────────────────────────────────────────────────────────────────────
@@ -249,7 +249,7 @@ Progress:          ✅ Complete & Ready to Build
 
 🚀 READY? START BUILDING NOW:
 
-    cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+    cd /home/jeopardous4/Downloads/ArchiveTune-1.0
     ./build-nmusic.sh
 
 ═══════════════════════════════════════════════════════════════════════════════

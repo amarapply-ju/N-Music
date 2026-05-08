@@ -1,7 +1,7 @@
 # N-Music Development Environment Setup
 
 ## Environment Overview
-This document outlines the development environment setup for the N-Music project (v13.2.0).
+This document outlines the development environment setup for the N-Music project (v1.0).
 
 ### Project Details
 - **Type:** Android Kotlin Application
@@ -51,7 +51,7 @@ export PATH=$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/
 ### Project Configuration Files
 
 #### local.properties
-Located at: `/home/jeopardous4/Downloads/ArchiveTune-13.2.0/local.properties`
+Located at: `/home/jeopardous4/Downloads/ArchiveTune-1.0/local.properties`
 
 ```properties
 sdk.dir=/home/jeopardous4/Android
@@ -72,7 +72,7 @@ Add to `local.properties` or set as environment variables:
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export ANDROID_HOME=$HOME/Android
-cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+cd /home/jeopardous4/Downloads/ArchiveTune-1.0
 
 # Check Gradle version
 ./gradlew --version
@@ -96,14 +96,14 @@ cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
 #### Or use full path to Java:
 ```bash
 export ANDROID_HOME=$HOME/Android
-cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+cd /home/jeopardous4/Downloads/ArchiveTune-1.0
 /usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar gradle/wrapper/gradle-wrapper.jar build
 ```
 
 ### Project Structure
 
 ```
-ArchiveTune-13.2.0/
+ArchiveTune-1.0/
 ├── app/                      # Main Android application module
 │   ├── build.gradle.kts     # App-level Gradle configuration
 │   ├── src/main/kotlin/      # Kotlin source code (MVVM + Compose)
@@ -144,7 +144,7 @@ ArchiveTune-13.2.0/
 
 3. **Run a Build:**
    ```bash
-   cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+   cd /home/jeopardous4/Downloads/ArchiveTune-1.0
    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
    export ANDROID_HOME=$HOME/Android
    ./gradlew build
@@ -173,7 +173,7 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 #### Issue: Gradle wrapper not executable
 **Solution:** Make it executable:
 ```bash
-chmod +x /home/jeopardous4/Downloads/ArchiveTune-13.2.0/gradlew
+chmod +x /home/jeopardous4/Downloads/ArchiveTune-1.0/gradlew
 ```
 
 ### Resources

@@ -43,21 +43,21 @@ and how to build & test the final app.
 
 QUICK BUILD (Easiest):
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0                          │
+│ cd /home/jeopardous4/Downloads/ArchiveTune-1.0                          │
 │ chmod +x build-nmusic.sh                                                    │
 │ ./build-nmusic.sh                                                           │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 MANUAL BUILD:
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0                          │
+│ cd /home/jeopardous4/Downloads/ArchiveTune-1.0                          │
 │ source /home/jeopardous4/archivetune-env.sh                                  │
 │ ./gradlew assembleDebug                                                     │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 BUILD WITH FULL PATH (No environment setup needed):
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0                          │
+│ cd /home/jeopardous4/Downloads/ArchiveTune-1.0                          │
 │ /usr/lib/jvm/java-17-openjdk-amd64/bin/java \                              │
 │   -jar gradle/wrapper/gradle-wrapper.jar assembleDebug                      │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -71,7 +71,7 @@ Expected build time: 3-8 minutes (first build takes longer)
 After the APK builds successfully:
 
 1. INSTALL TO ANDROID DEVICE/EMULATOR:
-   adb install -r /home/jeopardous4/Downloads/ArchiveTune-13.2.0/app/build/outputs/apk/mobile/debug/app-mobile-debug.apk
+   adb install -r /home/jeopardous4/Downloads/ArchiveTune-1.0/app/build/outputs/apk/mobile/debug/app-mobile-debug.apk
 
 2. OR COPY & INSTALL MANUALLY:
    cp app/build/outputs/apk/mobile/debug/app-mobile-debug.apk ~/Desktop/
@@ -183,7 +183,7 @@ Multiple Architecture APKs:
 🔄 ROLLBACK (If needed)
 
 To revert to ArchiveTune:
-  cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+  cd /home/jeopardous4/Downloads/ArchiveTune-1.0
   git checkout -- .
   ./gradlew clean build
 
@@ -194,7 +194,7 @@ Or restore from backup if you have one.
 📚 DOCUMENTATION
 
 Detailed mod documentation:
-  /home/jeopardous4/Downloads/ArchiveTune-13.2.0/UI_IMPLEMENTATION_COMPLETE.md
+  /home/jeopardous4/Downloads/ArchiveTune-1.0/UI_IMPLEMENTATION_COMPLETE.md
 
 Quick reference:
   /home/jeopardous4/QUICK_REFERENCE.txt
@@ -207,7 +207,7 @@ Setup guide:
 ✨ NEXT STEPS
 
 1. Build the APK:
-   cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0 && ./build-nmusic.sh
+   cd /home/jeopardous4/Downloads/ArchiveTune-1.0 && ./build-nmusic.sh
 
 2. Wait for build to complete (3-8 minutes)
 
@@ -270,7 +270,7 @@ Now it's your turn: run the build script and test the app!
 
 Command to start building right now:
 
-    cd /home/jeopardous4/Downloads/ArchiveTune-13.2.0
+    cd /home/jeopardous4/Downloads/ArchiveTune-1.0
     chmod +x build-nmusic.sh
     ./build-nmusic.sh
 

@@ -86,7 +86,7 @@ All screens now support full light/dark theme switching:
 3. **Create GitHub Release**:
    - Build the app
    - Create release with artifacts
-   - Version matches (13.2.0+)
+   - Version matches (1.0+)
 
 4. **Share Landing Page**:
    - Point users to: `https://github.com/koiverse/ArchiveTune` first
@@ -103,5 +103,5 @@ All screens now support full light/dark theme switching:
 ---
 
 **Date**: May 8, 2026
-**Version**: 13.2.0
+**Version**: 1.0
 **Status**: Ready for deployment
