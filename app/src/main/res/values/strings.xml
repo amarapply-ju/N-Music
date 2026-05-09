@@ -703,7 +703,13 @@ N-music will only extract your token, and everything else is stored locally.</st
     <string name="notification_settings">Notification</string>
     <string name="enable_update_notification">Enable Update Notification</string>
     <string name="enable_update_notification_desc">Get notified when a new stable version is released</string>
+    <string name="update_channel">Update Channel</string>
+    <string name="update_channel_desc">Choose between stable releases and nightly development snapshots.</string>
     <string name="channel_stable">Stable</string>
+    <string name="channel_nightly">Nightly</string>
+    <string name="updates_subtitle_nightly">Nightly builds and recent development commits</string>
+    <string name="updates_nightly_title">Nightly Delivery</string>
+    <string name="updates_nightly_description">Nightly builds track the latest development commits and may include unfinished changes.</string>
     <string name="commit_history">Development</string>
     <string name="recent_commits">Recent Commits</string>
     <string name="updates_latest_commit">Latest commit: %s</string>

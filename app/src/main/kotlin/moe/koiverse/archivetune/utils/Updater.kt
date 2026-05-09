@@ -121,6 +121,9 @@ object Updater {
     private val semVerRegex =
         Regex("""(?i)\bv?(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?\b""")
 
+    private val comparableVersionRegex =
+        Regex("""(?i)\bv?(\d+)(?:\.(\d+))?(?:\.(\d+))?(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?\b""")
+
     private fun parseSemVerOrNull(text: String): SemVer? {
         val match = semVerRegex.find(text) ?: return null
         val major = match.groupValues.getOrNull(1)?.toIntOrNull() ?: return null
@@ -147,12 +150,39 @@ object Updater {
         )
     }
 
+    private fun parseComparableVersionOrNull(text: String): SemVer? {
+        val match = comparableVersionRegex.find(text) ?: return null
+        val major = match.groupValues.getOrNull(1)?.toIntOrNull() ?: return null
+        val minor = match.groupValues.getOrNull(2)?.takeIf { it.isNotBlank() }?.toIntOrNull() ?: 0
+        val patch = match.groupValues.getOrNull(3)?.takeIf { it.isNotBlank() }?.toIntOrNull() ?: 0
+        val preReleaseText = match.groupValues.getOrNull(4)?.takeIf { it.isNotBlank() }
+        val preRelease =
+            preReleaseText
+                ?.split('.')
+                ?.filter { it.isNotBlank() }
+                ?.map { identifier ->
+                    if (identifier.all { it.isDigit() }) {
+                        NumericIdentifier(raw = identifier, value = identifier.toLong())
+                    } else {
+                        AlphaIdentifier(raw = identifier)
+                    }
+                }
+                ?: emptyList()
+
+        return SemVer(
+            major = major,
+            minor = minor,
+            patch = patch,
+            preRelease = preRelease,
+        )
+    }
+
     private fun parseReleaseSemVerOrNull(release: ReleaseInfo): SemVer? =
         parseSemVerOrNull(release.tagName) ?: parseSemVerOrNull(release.name)
 
     internal fun isSameVersion(a: String, b: String): Boolean {
-        val aSemVer = parseSemVerOrNull(a)
-        val bSemVer = parseSemVerOrNull(b)
+        val aSemVer = parseComparableVersionOrNull(a)
+        val bSemVer = parseComparableVersionOrNull(b)
         return if (aSemVer != null && bSemVer != null) {
             aSemVer.major == bSemVer.major &&
                 aSemVer.minor == bSemVer.minor &&
