@@ -600,6 +600,42 @@ class MusicService :
 
     private fun stopForegroundAndSelf() {
         cancelIdleStop()
+        
+        // Save player state before stopping service to prevent data loss during idle timeout
+        try {
+            if (dataStore.get(PersistentQueueKey, true) && player.mediaItemCount > 0) {
+                val mediaItemsSnapshot = player.mediaItems.mapNotNull { it.metadata }
+                val currentMediaItemIndex = player.currentMediaItemIndex
+                val currentPosition = player.currentPosition
+                val repeatMode = player.repeatMode
+                val shuffleModeEnabled = player.shuffleModeEnabled
+                val volume = playerVolume.value
+                val playbackState = player.playbackState
+                val playWhenReady = player.playWhenReady
+                
+                scope.launch(Dispatchers.IO) {
+                    val persistQueue = currentQueue.toPersistQueue(
+                        title = queueTitle,
+                        items = mediaItemsSnapshot,
+                        mediaItemIndex = currentMediaItemIndex,
+                        position = currentPosition
+                    )
+                    val persistPlayerState = PersistPlayerState(
+                        playWhenReady = playWhenReady,
+                        repeatMode = repeatMode,
+                        shuffleModeEnabled = shuffleModeEnabled,
+                        volume = volume,
+                        currentPosition = currentPosition,
+                        currentMediaItemIndex = currentMediaItemIndex,
+                        playbackState = playbackState
+                    )
+                    
+                    writePersistentObject(PERSISTENT_QUEUE_FILE, persistQueue)
+                    writePersistentObject(PERSISTENT_PLAYER_STATE_FILE, persistPlayerState)
+                }
+            }
+        } catch (_: Exception) {}
+        
         runCatching {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 stopForeground(STOP_FOREGROUND_REMOVE)
@@ -629,9 +665,9 @@ class MusicService :
 
         val delayMs =
             when (state) {
-                Player.STATE_READY -> 5 * 60_000L
-                Player.STATE_ENDED, Player.STATE_IDLE -> 30_000L
-                else -> 60_000L
+                Player.STATE_READY -> 10 * 60_000L  // 10 minutes - keep service alive after song ends
+                Player.STATE_ENDED, Player.STATE_IDLE -> 5 * 60_000L  // 5 minutes - increased from 30 seconds
+                else -> 2 * 60_000L  // 2 minutes - increased from 60 seconds
             }
 
         cancelIdleStop()
