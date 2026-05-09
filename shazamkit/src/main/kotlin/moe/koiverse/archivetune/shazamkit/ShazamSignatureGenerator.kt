@@ -5,7 +5,7 @@
  * Don't remove this copyright holder!
  */
 
-package moe.koiverse.archivetune.shazamkit
+package moe.mohsen.nmusic.shazamkit
 
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer

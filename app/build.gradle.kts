@@ -16,11 +16,11 @@ if (localPropertiesFile.exists()) {
 }
 
 android {
-    namespace = "moe.koiverse.archivetune"
+    namespace = "moe.mohsen.nmusic"
     compileSdk = 37
 
     defaultConfig {
-    applicationId = "moe.koiverse.archivetune"
+    applicationId = "moe.mohsen.nmusic"
         minSdk = 26
         targetSdk = 37
         versionCode = 133

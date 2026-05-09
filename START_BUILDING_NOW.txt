@@ -202,11 +202,11 @@ No APK file after build:
 
 App crashes on launch:
   Check logs: adb logcat | grep -i error
-  Try: adb shell pm clear moe.koiverse.archivetune
+  Try: adb shell pm clear moe.mohsen.nmusic
   Then reopen app
 
 Font/theme not showing:
-  Clear app cache: adb shell pm clear moe.koiverse.archivetune
+  Clear app cache: adb shell pm clear moe.mohsen.nmusic
   Force stop and restart app
 
 More help:

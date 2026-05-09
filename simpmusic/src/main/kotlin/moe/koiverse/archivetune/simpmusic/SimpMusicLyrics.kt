@@ -8,10 +8,10 @@
 
 
 
-package moe.koiverse.archivetune.simpmusic
+package moe.mohsen.nmusic.simpmusic
 
-import moe.koiverse.archivetune.simpmusic.models.LyricsData
-import moe.koiverse.archivetune.simpmusic.models.SimpMusicApiResponse
+import moe.mohsen.nmusic.simpmusic.models.LyricsData
+import moe.mohsen.nmusic.simpmusic.models.SimpMusicApiResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO

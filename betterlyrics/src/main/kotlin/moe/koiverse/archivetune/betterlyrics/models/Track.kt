@@ -8,7 +8,7 @@
 
 
 
-package moe.koiverse.archivetune.betterlyrics.models
+package moe.mohsen.nmusic.betterlyrics.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.ExperimentalSerializationApi

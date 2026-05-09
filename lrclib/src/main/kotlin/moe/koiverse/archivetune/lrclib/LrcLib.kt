@@ -8,10 +8,10 @@
 
 
 
-package moe.koiverse.archivetune.lrclib
+package moe.mohsen.nmusic.lrclib
 
-import moe.koiverse.archivetune.lrclib.models.Track
-import moe.koiverse.archivetune.lrclib.models.bestMatchingFor
+import moe.mohsen.nmusic.lrclib.models.Track
+import moe.mohsen.nmusic.lrclib.models.bestMatchingFor
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO

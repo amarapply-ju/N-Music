@@ -8,7 +8,7 @@
 
 
 
-package moe.koiverse.archivetune.simpmusic.models
+package moe.mohsen.nmusic.simpmusic.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

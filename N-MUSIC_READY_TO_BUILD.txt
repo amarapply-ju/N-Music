@@ -236,7 +236,7 @@ App crashes on launch:
   Review app/build.gradle.kts for any errors
 
 Font not appearing on titles:
-  Clear app data: adb shell pm clear moe.koiverse.archivetune
+  Clear app data: adb shell pm clear moe.mohsen.nmusic
   Restart app
 
 Theme selector not working:

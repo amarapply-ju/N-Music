@@ -8,9 +8,9 @@
 
 
 
-package moe.koiverse.archivetune.betterlyrics
+package moe.mohsen.nmusic.betterlyrics
 
-import moe.koiverse.archivetune.betterlyrics.models.TTMLResponse
+import moe.mohsen.nmusic.betterlyrics.models.TTMLResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

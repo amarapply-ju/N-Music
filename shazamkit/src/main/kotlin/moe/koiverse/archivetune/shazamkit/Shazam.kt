@@ -5,11 +5,11 @@
  * Don't remove this copyright holder!
  */
 
-package moe.koiverse.archivetune.shazamkit
+package moe.mohsen.nmusic.shazamkit
 
-import moe.koiverse.archivetune.shazamkit.models.RecognitionResult
-import moe.koiverse.archivetune.shazamkit.models.ShazamRequestJson
-import moe.koiverse.archivetune.shazamkit.models.ShazamResponseJson
+import moe.mohsen.nmusic.shazamkit.models.RecognitionResult
+import moe.mohsen.nmusic.shazamkit.models.ShazamRequestJson
+import moe.mohsen.nmusic.shazamkit.models.ShazamResponseJson
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
